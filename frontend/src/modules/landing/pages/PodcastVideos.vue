@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen xl:w-3/4 w-screen bg-[#FFEEE5] flex flex-col items-center">
-    <div class="mt-24 text-center flex flex-col items-center">
+    <div class="mt-14 text-center flex flex-col items-center">
       <h1 class="text-5xl w-auto sm:w-[500px] md:w-[640px] text-stone-500">
         Comienza tu día con un podcast
       </h1>
@@ -25,7 +25,7 @@
           </button>
         </div>
       </div>
-      <div class="w-screen h-full xl:pl-64 xl:pr-64">
+      <div class="w-screen h-full xl:pl-64 xl:pr-64 bg-[#FFEEE5]">
         <PodcastReproductor
           v-if="podcast && episodes.length > 0"
           :podcast="podcast"
@@ -45,6 +45,7 @@ import { ref } from 'vue';
 import fetchRandomSpanishPsychologyPodcast from './../../../composables/randomPodcast';
 import { fetchPodcastEpisodes } from './../../../composables/urlPodcastAudio';
 import PodcastReproductor from './../../../components/PodcastReproductor.vue';
+import Swal from 'sweetalert2';
 
 interface Podcast {
   title: string;
@@ -80,7 +81,11 @@ const getRandomPodcast = async () => {
       }
     }
   } catch (error) {
-    console.error('Error al obtener el podcast:', error);
+    Swal.fire({
+      icon: 'error',
+      title: 'Error al obtener el podcast',
+      text: 'Por favor, intenta de nuevo',
+    });
   }
 };
 </script>

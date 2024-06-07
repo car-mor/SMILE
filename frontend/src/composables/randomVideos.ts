@@ -11,7 +11,7 @@ export default async function fetchRandomVideos(): Promise<any> {
     // Realiza una búsqueda de podcasts relacionados con la psicología en español
     const response = await axios.get(`${VIDEOS_API_URL}/search`, {
       params: {
-        maxResults: 6,
+        maxResults: 0,
         part: 'snippet',
         type: 'video',
         q: 'psicología',
