@@ -1,6 +1,6 @@
 <template>
   <!-- component -->
-  <div class="bg-red-50 flex flex-col justify-center items-center w-full h-full absolute">
+  <div class="bg-[#FFEEE5] flex flex-col justify-center items-center w-full h-full absolute">
     <!-- Image -->
     <div class="h-auto mt-6">
       <img
@@ -41,19 +41,19 @@
         </div>
 
         <!-- Forgot Password Link -->
-        <div class="mb-6 w-full text-right text-red-300">
+        <div class="mb-6 w-full text-right text-[#E6836D]">
           <a href="#" class="hover:underline">¿Olvidaste tu contraseña?</a>
         </div>
         <!-- Login Button -->
         <button
           type="submit"
-          class="w-full bg-red-200 hover:bg-red-300 text-white font-semibold rounded-md py-2 px-4"
+          class="w-full bg-[#E6836D] hover:bg-red-300 text-white font-semibold rounded-md py-2 px-4"
         >
           Iniciar Sesión
         </button>
       </form>
       <!-- Sign up Link -->
-      <div class="mt-6 text-red-300 text-center">
+      <div class="mt-6 text-[#E6836D] text-center">
         <RouterLink class="hover:underline" to="/create-account">Crear Cuenta</RouterLink>
       </div>
     </div>

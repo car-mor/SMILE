@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col md:flex-row w-full h-full absolute bg-red-50">
+  <div class="flex flex-col md:flex-row w-full h-full absolute bg-[#FFEEE5]">
     <div
       class="basis-1/4 h-full flex flex-col items-center justify-center md:order-2 md:basis-1/2 md:mr-12 md:ml-8"
     >
@@ -14,13 +14,13 @@
 
       <div class="flex flex-col md:flex-row mt-12 justify-center md:mt-1">
         <div class="flex justify-center mt-12">
-          <button class="bg-red-200 rounded-lg py-2 px-4 text-white">
-            <RouterLink to="/about">¿Quiénes somos?</RouterLink>
+          <button class="bg-[#E6836D] rounded-lg py-2 px-4 text-white">
+            <RouterLink to="/about" class="text-xl">¿Quiénes somos?</RouterLink>
           </button>
         </div>
         <div class="flex justify-center mt-12">
-          <button class="bg-red-200 rounded-lg py-2 px-4 text-white md:ml-4">
-            <RouterLink to="/login">Comenzar ahora</RouterLink>
+          <button class="bg-[#E6836D] rounded-lg py-2 px-4 text-white md:ml-4">
+            <RouterLink to="/login" class="text-xl">Comenzar ahora</RouterLink>
           </button>
         </div>
       </div>

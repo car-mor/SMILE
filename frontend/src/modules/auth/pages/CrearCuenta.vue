@@ -1,7 +1,7 @@
 <template>
   <!-- component -->
 
-  <div class="bg-red-50 flex flex-col justify-center items-center min-h-screen w-full h-full">
+  <div class="bg-[#FFEEE5] flex flex-col justify-center items-center min-h-screen w-full h-full">
     <!-- Image -->
     <div class="h-full mt-6">
       <img
@@ -72,7 +72,7 @@
         <div class="mb-6 w-full text-right text-red-300">
           <h1 class="text-md font-semibold mb-4 text-stone-500 text-right">
             ¿Ya estás registrado?
-            <span class="hover:underline hover:text-red-300"
+            <span class="hover:underline hover:text-red-300 text-[#E6836D]"
               ><RouterLink class="hover:underline" to="/login">Ingresa aquí</RouterLink></span
             >
           </h1>
@@ -80,7 +80,7 @@
         <!-- Login Button -->
         <button
           type="submit"
-          class="w-full bg-red-200 hover:bg-red-300 text-white font-semibold rounded-md py-2 px-4"
+          class="w-full bg-[#E6836D] hover:bg-red-300 text-white font-semibold rounded-md py-2 px-4"
         >
           Crear Cuenta
         </button>

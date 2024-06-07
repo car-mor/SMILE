@@ -26,6 +26,7 @@ const router = createRouter({
     },
     {
       path: '/home',
+      redirect: { name: 'home-begin' },
       name: 'home',
       component: () => import('@/modules/landing/pages/layouts/PagInicioLayout.vue'),
       children: [
