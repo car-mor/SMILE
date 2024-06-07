@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'DejaVu Serif';
+  src: url('./fonts/DejaVuSerif.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Yeseva One';
+  src: url('./fonts/YesevaOne-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
