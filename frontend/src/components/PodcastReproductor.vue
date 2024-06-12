@@ -110,6 +110,10 @@ interface Episode {
 const props = defineProps<{
   podcast: Podcast;
   episodes: Episode[];
+  podcastTitle: string;
+  podcastAuthor: string;
+  podcastImage: string;
+  episode: Episode;
 }>();
 
 const currentEpisodeIndex = ref<number>(0);

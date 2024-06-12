@@ -1,7 +1,7 @@
 <template>
   <!-- component -->
   <div
-    class="w-full h-screen flex flex-col lg:flex-row items-center justify-center space-y-16 lg:space-y-0 space-x-8 2xl:space-x-0 bg-red-50"
+    class="w-full h-screen flex flex-col lg:flex-row items-center justify-center space-y-16 lg:space-y-0 space-x-8 2xl:space-x-0 bg-[#FFEEE5]"
   >
     <div
       class="w-full lg:w-1/2 flex flex-col items-center justify-center lg:px-2 xl:px-0 text-center"
@@ -15,7 +15,7 @@
       </p>
       <a
         href="#"
-        class="flex items-center space-x-2 bg-red-300 hover:bg-red-200 text-gray-100 px-4 py-2 rounded transition duration-150"
+        class="flex items-center space-x-2 bg-[#E6836D] hover:bg-red-200 text-gray-100 px-4 py-2 rounded transition duration-150"
         title="Return Home"
       >
         <svg
