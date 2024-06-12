@@ -65,6 +65,12 @@ const router = createRouter({
           name: 'explore-podcasts',
           component: DescubrePodcasts,
         },
+        {
+          path: 'selected-podcast/:itunesId',
+          name: 'selected-podcast',
+          component: () => import('@/modules/landing/subpages/PodcastSeleccionado.vue'),
+          props: true,
+        },
       ],
     },
 
