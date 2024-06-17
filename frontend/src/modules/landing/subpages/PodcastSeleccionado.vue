@@ -1,12 +1,25 @@
 <template>
   <div>
     <div v-if="error">{{ error }}</div>
-    <div v-else-if="podcast">
-      <h1>{{ podcast.title }}</h1>
-      <img v-if="!showPlayer" :src="podcast.image" alt="Podcast Image" />
+    <div
+      v-else-if="podcast"
+      class="flex flex-col h-screen w-full absolute items-center bg-[#FFEEE5] xl:pr-64"
+    >
+      <h1 v-if="!showPlayer" class="text-4xl mt-28 text-stone-500">{{ podcast.title }}</h1>
+      <img
+        v-if="!showPlayer"
+        :src="podcast.image"
+        alt="Podcast Image"
+        class="border-2 border-transparent w-64 rounded-lg m-16 md:w-64"
+      />
       <!-- Añadir más detalles del podcast -->
       <ul v-if="!showPlayer">
-        <li v-for="episode in episodes" :key="episode.enclosureUrl" @click="playEpisode(episode)">
+        <li
+          v-for="episode in episodes"
+          :key="episode.enclosureUrl"
+          @click="playEpisode(episode)"
+          class="hover:bg-[#E6836D] hover:text-white hover:border-2 hover:border-transparent hover:rounded-lg h-10 justify-center text-xl flex items-center"
+        >
           {{ episode.title }}
         </li>
       </ul>
