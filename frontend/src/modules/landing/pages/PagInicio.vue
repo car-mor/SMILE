@@ -72,7 +72,7 @@
           </div>
         </dialog>
         <div class="btn w-24 h-16 border-0 bg-[#C2E6ED] hover:bg-[#E1F7F5] mt-4">
-          <IconoMapa class="" />
+          <IconoMapa class="" :fill="'gray'" />
         </div>
         <div
           class="btn w-24 h-16 border-0 bg-[#DBA99D] hover:bg-[#FFD0D0] mt-4"
