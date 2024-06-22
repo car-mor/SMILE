@@ -20,13 +20,17 @@
       </div>
     </div>
 
-    <div class="flex flex-col md:ml-24 items-center pt-1 md:mt-1 xl:mr-80">
-      <div class="flex flex-wrap justify-center w-full pt-16 md:pt-20 xl:pt-24">
+    <div
+      class="flex flex-col md:ml-24 bg-[#FFEEE5] w-screen pb-6 items-center pt-1 md:mt-1 xl:mr-80"
+    >
+      <div class="flex flex-wrap justify-center pt-16 md:pt-20 xl:pt-24">
         <div class="flex justify-center space-x-4 md:space-x-12 xl:space-x-48">
-          <button class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-4">
-            Presencial
+          <button class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-4 flex items-center">
+            <IconoOffice class="mr-2" />Presencial
           </button>
-          <button class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-4">En línea</button>
+          <button class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-4 flex items-center">
+            <IconoCamara class="mr-2 w-6" /> En línea
+          </button>
           <button class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-4 flex items-center">
             <IconoBusqueda class="mr-2" />Buscar
           </button>
@@ -36,15 +40,15 @@
         <div class="flex justify-center space-x-4 md:space-x-12 xl:space-x-48">
           <button
             @click="openModal('especialidad')"
-            class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-4"
+            class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-2 flex items-center"
           >
-            Especialidad buscada
+            Especialidad buscada <IconoEspecialidad class="ml-2 w-8" />
           </button>
           <button
             @click="openModal('ubicacion')"
-            class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-4"
+            class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-2 flex items-center"
           >
-            Ubicación
+            Ubicación <IconoMapa class="ml-2 w-6" :fill="'white'" />
           </button>
         </div>
       </div>
@@ -96,7 +100,10 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import IconoBusqueda from '@/assets/icons/ComponentsIcons/IconoBusqueda.vue';
-
+import IconoMapa from '@/assets/icons/ComponentsIcons/IconoMapa.vue';
+import IconoEspecialidad from '@/assets/icons/ComponentsIcons/IconoEspecialidad.vue';
+import IconoCamara from '@/assets/icons/ComponentsIcons/IconoCamara.vue';
+import IconoOffice from '@/assets/icons/ComponentsIcons/IconoOffice.vue';
 const modal = ref<string | null>(null);
 
 const openModal = (type: string) => {
