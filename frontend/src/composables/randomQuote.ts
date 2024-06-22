@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { LanguageServiceMode } from 'typescript';
 
 export default async function fetchRandomQuote(): Promise<any> {
   const options = {
