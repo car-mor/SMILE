@@ -1,0 +1,28 @@
+### Obtener todos los especialistas
+GET http://localhost:1234/api/especialista
+
+### Obtener especialistas por ID
+GET http://localhost:1234/api/especialista/1
+
+
+### Crear especialista
+POST http://localhost:1234/api/especialista/crearEspecialista
+Content-Type: application/json
+
+{   
+    "Nombre": "David",
+    "Apellido": "Campbell",
+    "Titulo": "Psicologo",
+    "Numero": "5512345678",
+    "Correo": "davidCamp@smile.com",
+    "Modalidad": "Virtual",
+    "Ubicacion": "Calle 7 #12, 04870, CDMX"
+}
+
+### Eliminar publicacion
+POST http://localhost:1234/api/especialista/eliminarEspecialista
+Content-Type: application/json
+
+{
+    "id_Especialista": 3
+}

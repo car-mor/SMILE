@@ -1,0 +1,16 @@
+### Obtener todos los lugares almacenados
+GET http://localhost:1234/api/grupo
+
+### Obtener lugar por ID
+GET http://localhost:1234/api/grupo/1
+
+### Crear lugar de prueba 1: ESCOM
+POST http://localhost:1234/api/grupo/crearGrupo
+Content-Type: application/json
+
+{   
+    "Nombre": "UNAM",
+    "Descripcion": "Universidad Nacional Autónoma de México",
+    "Cantidad_Miembros": 10,
+    "Url_foto": "https://www.unam.mx/images/escudo_unam.png"
+}

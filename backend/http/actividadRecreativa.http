@@ -1,0 +1,24 @@
+### Obtener todos las actividades recreativas
+GET http://localhost:1234/api/actividadRecreativa
+
+### Obtener actividad recreativa por ID
+GET http://localhost:1234/api/actividadRecreativa/1
+
+
+### Crear especialista
+POST http://localhost:1234/api/actividadRecreativa/crearActividadRecreativa
+Content-Type: application/json
+
+{   
+    "Titulo": "Ajedrez",
+    "url_imagen": "https://images.chesscomfiles.com/uploads/v1/images_users/tiny_mce/PedroPinhata/phpZTvydV.png",
+    "url_actividad": "https://www.chess.com/home"
+}
+
+### Eliminar publicacion
+POST http://localhost:1234/api/actividadRecreativa/eliminarActividadRecreativa
+Content-Type: application/json
+
+{
+    "id_Actividad_Recreativa": 5
+}

@@ -1,0 +1,8 @@
+### Loguear usuario
+POST http://localhost:1234/api/authenticator/login
+Content-Type: application/json
+
+{ 
+    "Correo": "ar.contreras372@gmail.com",
+    "Contrasena": "12345"
+}

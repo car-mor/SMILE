@@ -1,0 +1,30 @@
+### Obtener todos las publicaciones
+GET http://localhost:1234/api/publicacion/1
+
+### Obtener publicaciones por ID
+POST http://localhost:1234/api/publicacion/consultar
+Content-Type: application/json
+
+{   
+    "id_Publicacion": "2"
+}
+
+
+### Crear publicacion
+POST http://localhost:1234/api/publicacion/crearPublicacion
+Content-Type: application/json
+
+{   
+    "id_usuario": 1,
+    "titulo": "Actitud de psicologos",
+    "contenido": "La actitud de los psicologos en la actualidad",
+    "categoria": "Psicología"
+}
+
+### Eliminar publicacion
+POST http://localhost:1234/api/publicacion/eliminarPublicacion
+Content-Type: application/json
+
+{
+    "idPublicacion": "2"
+}
