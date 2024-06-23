@@ -17,7 +17,11 @@ import { ActividadRecreativaRouter } from './routes/actividadRecreativa.js'
 export const crearApp = (Modelos) => {
   const app = express()
   app.use(json())
-  app.use(cors())
+  app.use(cors({
+    origin: ['http://127.0.0.1:5173', 'http://localhost:8081'],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,  // Permite el envío de cookies
+  }));
   app.use(cookieParser())
 
   app.disable('x-powered-by')

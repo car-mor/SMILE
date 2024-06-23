@@ -12,7 +12,7 @@
     <!-- Login Form -->
     <div class="p-8 w-full max-w-md mt-16">
       <h1 class="text-2xl font-semibold mb-4 text-stone-500 text-center">Inicio de sesión</h1>
-      <form action="#" method="POST" class="flex flex-col items-center">
+      <form @submit.prevent="iniciarSesion" class="flex flex-col items-center">
         <!-- Username Input -->
         <div class="mb-4 w-full">
           <label for="username" class="block text-gray-600 mb-2"
@@ -21,6 +21,7 @@
           <input
             type="text"
             id="username"
+            v-model="usuario"
             name="username"
             placeholder="Introduce tu nombre de usuario o correo"
             class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-orange-500"
@@ -33,6 +34,7 @@
           <input
             type="password"
             id="password"
+            v-model="password"
             name="password"
             placeholder="Introduce tu contraseña"
             class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-orange-500"
@@ -59,3 +61,55 @@
     </div>
   </div>
 </template>
+
+<script>
+import { apiFromBackend } from "@/helpers/ApiFromBackend"
+import { isThisTypeNode } from "typescript"
+import Swal from "sweetalert2"
+
+export default{
+  name: "inicioSesion",
+  data() {
+    return{
+      usuario: "",
+      password: "",
+    }
+  },
+  computed: {
+    isFormEmpty(){
+      return !isThisTypeNode.usuario || !this.password
+    },
+  },
+  methods:{
+    async iniciarSesion(){
+      try{
+        const response = await apiFromBackend.post("/api/authenticator/login",{
+          "Correo": this.usuario,
+          "Contrasena": this.password,
+        })
+        if(response.data.status === 401){
+          Swal.fire({
+            title: 'Oops!',
+            text: response.data.error,
+            icon: 'error',
+            confirmButtonText: 'OK'
+          })
+        }
+        else{
+          //Se inicia sesion
+        }
+      }
+      catch({response}){
+        Swal.fire({
+            title: 'Oops!',
+            text: response,
+            icon: 'error',
+            confirmButtonText: 'OK'
+          })
+      }
+    }
+  }
+  
+}
+
+</script>
