@@ -1,0 +1,39 @@
+### Obtener todos los lugares favoritos de un usuario
+POST http://localhost:1234/api/miembroGrupo/obtenerMiembrosGrupo
+Content-Type: application/json
+
+{   
+    "idGrupo": "1"
+}
+
+### Obtener  por ID
+GET http://localhost:1234/api/miembroGrupo/2
+
+
+### Crear miembro grupo para el primer grupo
+POST http://localhost:1234/api/miembroGrupo/crearMiembroGrupo
+Content-Type: application/json
+
+{   
+    "id_Grupo": 1,
+    "id_Usuario": 1
+}
+
+### Crear miembro grupo para el segundo grupo
+POST http://localhost:1234/api/miembroGrupo/crearMiembroGrupo
+Content-Type: application/json
+
+{   
+    "id_Grupo": 2,
+    "id_Usuario": 1
+}
+
+
+### Eliminar lugar favorito
+POST http://localhost:1234/api/miembroGrupo/eliminarMiembroGrupo
+Content-Type: application/json
+
+{   
+    "id_Grupo": 1,
+    "id_Usuario": 1
+}

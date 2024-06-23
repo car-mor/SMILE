@@ -1,0 +1,31 @@
+### Obtener todos los usuarios  
+GET http://localhost:1234/api/usuario
+
+### Recuperar un usuario Turista por correo
+GET http://localhost:1234/api/usuario/ar.contreras372@gmail.com
+
+### Crear un nuevo usuario
+POST http://localhost:1234/api/authenticator/registro/usuario
+Content-Type: application/json
+
+{ 
+    "Nombre": "Angel",
+    "Apellido": "Contreras",
+    "Correo": "cgrazo7.cgr@gmail.com",
+    "Contrasena": "12345",
+    "Fecha_Nacimiento": "2003-01-05",
+    "Url_Foto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQexVB_aN7tja7JIxbHVyXdDNmrTLvV0mgvgQ&s"
+}
+
+### Crear un nuevo usuario 2
+POST http://localhost:1234/api/authenticator/registro/usuario
+Content-Type: application/json
+
+{ 
+    "Nombre": "Arcy",
+    "Apellido": "Contreras",
+    "Correo": "ar.contreras372@gmail.com",
+    "Contrasena": "12345",
+    "Fecha_Nacimiento": "2003-01-05",
+    "Url_Foto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQexVB_aN7tja7JIxbHVyXdDNmrTLvV0mgvgQ&s"
+}

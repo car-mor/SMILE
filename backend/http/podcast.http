@@ -1,0 +1,25 @@
+### Obtener todos los podcast
+GET http://localhost:1234/api/podcast
+
+### Obtener podcast por ID
+GET http://localhost:1234/api/podcast/4
+
+
+### Crear podcast
+POST http://localhost:1234/api/podcast/crearPodcast
+Content-Type: application/json
+
+{   
+    "titulo": "PSICOLOGIA OSCURA",
+    "autor": "Carlos Alberto Irineo Monroy",
+    "url": "https://open.spotify.com/episode/2RJ0i8jDk7MydZJkHPdUWo?si=375c6fe1531e4705",
+    "anio_publicacion": 2021
+}
+
+### Eliminar podcast
+POST http://localhost:1234/api/podcast/eliminarPodcast
+Content-Type: application/json
+
+{
+    "id_Podcast": 4
+}
