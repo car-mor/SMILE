@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node servidor-local.js",
-    "dev": "node --watch servidor-local.js",
+    "dev": "nodemon servidor-local.js",
     "html": "servor ./web 8080 --reload --browse",
     "lint": "eslint . --fix"
   },
@@ -36,6 +36,7 @@
     "mysql2": "^3.10.1",
     "node-mailjet": "^6.0.5",
     "nodemailer": "^6.9.7",
+    "nodemon": "^3.1.4",
     "zod": "3.22.4"
   },
   "devDependencies": {
