@@ -6,7 +6,9 @@
     <div class="mt-12 text-center flex flex-col items-center sm:flex-row sm:items-start">
       <!-- Imagen podcast y link -->
       <div class="bg-stone-500/40 rounded-xl sm:mr-4 mr- xl:ml-48">
-        <img class="w-full lg:h-64 p-2 sm:h-[48vh]" src="@/assets/imgs/podcastHome.png" />
+        <RouterLink :to="{ path: 'selected-podcast/1457956865' }" class="flex rounded-lg">
+          <img class="w-full lg:h-64 p-2 sm:h-[48vh]" src="@/assets/imgs/podcastHome.png" />
+        </RouterLink>
       </div>
 
       <!-- Botones -->
@@ -101,19 +103,6 @@
       </div>
     </div>
 
-    <div
-      class="mr-4 ml-4 mt-4 pr-10 relative flex-grow flex flex-row text-2xl text-white bg-[#E6836D] hover:bg-red-200 p-4 border-0 rounded-md w-auto h-auto"
-    >
-      <p class="text-lg text-left mr-2">Escuchar podcasts</p>
-      <div class="absolute right-2 ml-2">
-        <RouterLink
-          :to="{ path: 'home/selected-podcast/1457956865' }"
-          class="flex pl-16 rounded-lg"
-        >
-          <IconoFlecha class="ml-4 rounded-lg hover:bg-red-300 ml-16" />
-        </RouterLink>
-      </div>
-    </div>
     <h4 class="text-lg text-stone-500 pt-6 bg-[#FFEEE5] w-screen grid place-content-center">
       Te podría interesar...
     </h4>
