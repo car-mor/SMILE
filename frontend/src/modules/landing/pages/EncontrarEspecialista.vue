@@ -17,31 +17,35 @@
       class="flex flex-col md:ml-24 bg-[#FFEEE5] w-screen pb-6 items-center pt-1 md:mt-1 xl:mr-80"
     >
       <div class="flex flex-wrap justify-center pt-16 md:pt-20 xl:pt-24">
-        <div class="flex justify-center w-screen absolute space-x-4 md:space-x-12 xl:space-x-48">
-          <button class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-2 flex items-center">
+        <div class="flex justify-center w-screen absolute space-x-4 md:space-x-12 xl:space-x-16">
+          <button
+            class="bg-[#E6836D] hover:bg-red-200 w-32 rounded-lg text-white p-2 flex items-center"
+          >
             <IconoOffice class="mr-2" />Presencial
           </button>
-          <button class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-2 flex items-center">
+          <button
+            class="bg-[#E6836D] hover:bg-red-200 w-32 rounded-lg pl-5 text-white p-2 flex items-center"
+          >
             <IconoCamara class="mr-2 w-6" /> En línea
           </button>
-          <button class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-2 flex items-center">
-            <IconoBusqueda class="mr-2" />Buscar
+          <button
+            @click="openModal('especialidad')"
+            class="bg-[#E6836D] hover:bg-red-200 w-32 rounded-lg text-white p-2 flex items-center"
+          >
+            <IconoEspecialidad class="ml-0 w-10" />Especialidad buscada
+          </button>
+          <button
+            @click="openModal('ubicacion')"
+            class="bg-[#E6836D] hover:bg-red-200 rounded-lg w-32 text-white p-2 flex items-center"
+          >
+            <IconoMapa class="ml-2 w-6" :fill="'white'" />Ubicación
           </button>
         </div>
       </div>
       <div class="flex flex-wrap justify-center w-full pt-32">
         <div class="flex justify-center w-screen absolute space-x-4 md:space-x-12 xl:space-x-48">
-          <button
-            @click="openModal('especialidad')"
-            class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-2 flex items-center"
-          >
-            Especialidad buscada <IconoEspecialidad class="ml-2 w-8" />
-          </button>
-          <button
-            @click="openModal('ubicacion')"
-            class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-2 flex items-center"
-          >
-            Ubicación <IconoMapa class="ml-2 w-6" :fill="'white'" />
+          <button class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-2 flex items-center">
+            Buscar <IconoBusqueda class="ml-2" />
           </button>
         </div>
       </div>
