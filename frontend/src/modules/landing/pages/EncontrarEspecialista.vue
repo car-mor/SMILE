@@ -1,7 +1,7 @@
 <template>
   <div class="w-screen h-screen absolute bg-[#FFEEE5] flex flex-col items-center">
     <div
-      class="mt-14 text-center flex flex-col items-center xl:flex-row xl:items-center md:ml-24 xl:mr-64 xl:space-x-8 pt-12"
+      class="mt-4 text-center flex flex-col items-center xl:flex-row xl:items-center md:ml-24 xl:mr-64 xl:space-x-8 pt-12 xl:pr-32"
     >
       <div>
         <h1 class="text-5xl sm:w-[500px] md:w-[640px] text-stone-500">
@@ -11,33 +11,26 @@
           Decide de que manera te gustaría agendar tu cita
         </p>
       </div>
-      <div>
-        <img
-          src="@/assets/imgs/especialista.png"
-          alt="Especialista"
-          class="w-auto h-[200px] mt-8 xl:mt-0 md:mr-32"
-        />
-      </div>
     </div>
 
     <div
       class="flex flex-col md:ml-24 bg-[#FFEEE5] w-screen pb-6 items-center pt-1 md:mt-1 xl:mr-80"
     >
       <div class="flex flex-wrap justify-center pt-16 md:pt-20 xl:pt-24">
-        <div class="flex justify-center space-x-4 md:space-x-12 xl:space-x-48">
-          <button class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-4 flex items-center">
+        <div class="flex justify-center w-screen absolute space-x-4 md:space-x-12 xl:space-x-48">
+          <button class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-2 flex items-center">
             <IconoOffice class="mr-2" />Presencial
           </button>
-          <button class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-4 flex items-center">
+          <button class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-2 flex items-center">
             <IconoCamara class="mr-2 w-6" /> En línea
           </button>
-          <button class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-4 flex items-center">
+          <button class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-2 flex items-center">
             <IconoBusqueda class="mr-2" />Buscar
           </button>
         </div>
       </div>
-      <div class="flex flex-wrap justify-center w-full pt-16">
-        <div class="flex justify-center space-x-4 md:space-x-12 xl:space-x-48">
+      <div class="flex flex-wrap justify-center w-full pt-32">
+        <div class="flex justify-center w-screen absolute space-x-4 md:space-x-12 xl:space-x-48">
           <button
             @click="openModal('especialidad')"
             class="bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-2 flex items-center"

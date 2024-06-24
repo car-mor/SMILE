@@ -91,7 +91,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import IconoSiguiente from './../assets/icons/ComponentsIcons/IconoSiguiente.vue';
 import IconoAnterior from './../assets/icons/ComponentsIcons/IconoAnterior.vue';
 import IconoForward from './../assets/icons/ComponentsIcons/IconoForward.vue';
@@ -183,11 +183,11 @@ function previousEpisode() {
     loadEpisode(currentEpisodeIndex.value - 1);
   } else {
     Swal.fire({
-  title: 'Oops!',
-  text: 'Este es el primer episodio',
-  icon: 'warning',
-  confirmButtonText: 'OK'
-})
+      title: 'Oops!',
+      text: 'Este es el primer episodio',
+      icon: 'warning',
+      confirmButtonText: 'OK',
+    });
   }
 }
 
@@ -200,11 +200,11 @@ function nextEpisode() {
     loadEpisode(currentEpisodeIndex.value + 1);
   } else {
     Swal.fire({
-  title: 'Oops!',
-  text: 'Este es el último episodio',
-  icon: 'warning',
-  confirmButtonText: 'OK'
-})
+      title: 'Oops!',
+      text: 'Este es el último episodio',
+      icon: 'warning',
+      confirmButtonText: 'OK',
+    });
   }
 }
 

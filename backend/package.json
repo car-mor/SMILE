@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node servidor-local.js",
-    "dev": "node --watch servidor-local.js",
+    "dev": "nodemon servidor-local.js",
     "html": "servor ./web 8080 --reload --browse",
     "lint": "eslint . --fix"
   },
@@ -44,6 +44,7 @@
     "eslint-plugin-import": "^2.29.0",
     "eslint-plugin-n": "^16.3.1",
     "eslint-plugin-promise": "^6.1.1",
+    "nodemon": "^3.1.4",
     "servor": "4.0.2",
     "standard": "17.1.0"
   },

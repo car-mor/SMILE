@@ -35,7 +35,7 @@ export const crearApp = (Modelos) => {
   app.use('/api/especialista', EspecialistaRouter(Modelos))
   app.use('/api/actividadRecreativa', ActividadRecreativaRouter(Modelos))
 
-  const PORT = process.env.PORT ?? 1234
+  const PORT = process.env.PORT ?? 5555
 
   app.listen(PORT, () => {
     console.log(`server listening on port http://localhost:${PORT}`)
