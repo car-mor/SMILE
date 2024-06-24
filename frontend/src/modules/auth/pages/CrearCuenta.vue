@@ -10,21 +10,38 @@
     <div class="flex flex-col p-8 w-full h-full max-w-md mt-16">
       <h1 class="text-4xl font-semibold mb-4 text-stone-500 text-center">Crea una cuenta</h1>
       <form @submit.prevent="onSubmit" class="flex flex-col items-center">
-        <!-- Username Input -->
+        <!-- Nombre -->
         <div class="mb-4 w-full">
-          <label for="username" class="block text-gray-600 mb-2"
-            >Nombre de usuario/correo electrónico</label
+          <label for="nombre" class="block text-gray-600 mb-2"
+            >Nombre (s)</label
           >
           <input
-            v-model="form.username"
+            v-model="form.nombre"
             type="text"
-            id="username"
-            name="username"
-            placeholder="Introduce tu nombre de usuario o correo"
+            id="nombre"
+            name="nombre"
+            placeholder="Introduce tu nombre"
             class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-orange-500"
             autocomplete="off"
           />
-          <span v-if="errors.username" class="text-red-500">{{ errors.username }}</span>
+          <span v-if="errors.nombre" class="text-red-500">{{ errors.nombre }}</span>
+        </div>
+
+        <!-- Apellido-->
+        <div class="mb-4 w-full">
+          <label for="apellido" class="block text-gray-600 mb-2"
+            >Apellido</label
+          >
+          <input
+            v-model="form.apellido"
+            type="text"
+            id="apellido"
+            name="apellido"
+            placeholder="Introduce tu apellido"
+            class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-orange-500"
+            autocomplete="off"
+          />
+          <span v-if="errors.apellido" class="text-red-500">{{ errors.apellido }}</span>
         </div>
         <!-- Mail Input -->
         <div class="mb-4 w-full">
@@ -110,6 +127,7 @@ import * as yup from 'yup';
 import Swal from 'sweetalert2';
 import HidePassword from '@/assets/icons/ComponentsIcons/IconoEyesOff.vue';
 import ShowPassword from '@/assets/icons/ComponentsIcons/IconoEyesOn.vue';
+import { apiFromBackend } from "@/helpers/ApiFromBackend"
 
 export default defineComponent({
   components: {
@@ -118,7 +136,8 @@ export default defineComponent({
   },
   setup() {
     const form = reactive({
-      username: '',
+      nombre: '',
+      apellido: '',
       mail: '',
       password: '',
       birth: '',
@@ -135,7 +154,6 @@ export default defineComponent({
     });
 
     const schema = yup.object().shape({
-      username: yup.string().required('El nombre de usuario es obligatorio'),
       mail: yup.string().email('El correo no es válido').required('El correo es obligatorio'),
       password: yup.string().required('La contraseña es obligatoria'),
     });
@@ -189,8 +207,30 @@ export default defineComponent({
           });
         } else {
           // Aquí puedes manejar el envío del formulario
-          console.log('Formulario válido', form);
+          creacionCuenta()
         }
+      }
+    };
+
+    const creacionCuenta = async () => {
+      try{
+        const response = await apiFromBackend.post("/api/authenticator/registro/usuario",{
+          "Nombre": form.nombre,
+          "Apellido": form.apellido,
+          "Correo": form.mail,
+          "Contrasena": form.password,
+          "Fecha_Nacimiento": form.birth,
+          "Url_Foto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQexVB_aN7tja7JIxbHVyXdDNmrTLvV0mgvgQ&s"
+        })
+        console.log(response)
+        if(response.data.status===200){
+          new Vue({
+            
+          })
+        }
+      }
+      catch(response){
+
       }
     };
 

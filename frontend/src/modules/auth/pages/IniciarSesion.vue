@@ -16,14 +16,14 @@
         <!-- Username Input -->
         <div class="mb-4 w-full">
           <label for="username" class="block text-gray-600 mb-2"
-            >Nombre de usuario/correo electrónico</label
+            >correo electrónico</label
           >
           <input
             type="text"
             id="username"
             v-model="usuario"
             name="username"
-            placeholder="Introduce tu nombre de usuario o correo"
+            placeholder="Introduce tu correo"
             class="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-orange-500"
             autocomplete="off"
           />
@@ -96,7 +96,7 @@ export default{
           })
         }
         else{
-          //Se inicia sesion
+          this.$router.push({name:"home"})
         }
       }
       catch({response}){
