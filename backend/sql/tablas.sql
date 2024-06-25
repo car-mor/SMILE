@@ -13,6 +13,7 @@ CREATE TABLE usuario (
   url_Foto varchar(200) DEFAULT NULL
 );
 
+
 CREATE TABLE grupo (
   id_Grupo int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   Nombre varchar(50) NOT NULL,
@@ -20,6 +21,17 @@ CREATE TABLE grupo (
   Cantidad_Miembros int NOT NULL DEFAULT 0,
   Url_foto varchar(200) DEFAULT NULL
 );
+
+CREATE TABLE mensajes (
+  id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  usuario_id int NOT NULL,
+  grupo_id int NOT NULL,
+  mensaje text NOT NULL,
+  fecha datetime NOT NULL,
+  FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE,
+  FOREIGN KEY (grupo_id) REFERENCES grupo(id_Grupo) ON DELETE CASCADE
+);
+
 
 CREATE TABLE miembro_grupo (
   id_Miembro_Grupo int PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -117,3 +129,4 @@ select * from podcast;
 select * from publicacion;
 select * from especialista;
 select * from actividadRecreativa;
+select * from mensajes;

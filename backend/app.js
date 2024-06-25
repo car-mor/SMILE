@@ -1,11 +1,13 @@
-import express, { json } from 'express' // require -> commonJS
-import cors from "cors";
-import 'dotenv/config'
+import express, { json } from 'express'
+import cors from 'cors'
+import { createServer } from 'http'
+import { Server } from 'socket.io'
+import cookieParser from 'cookie-parser'
+import path from 'path'
+import dotenv from 'dotenv'
+
 
 import { corsMiddleware } from './middlewares/cors.js'
-import { soloAdmin, soloPublico } from './middlewares/authorization.js'
-import cookieParser from 'cookie-parser'
-import { AuthenticatorRouter } from './routes/authenticator.js'
 import { UsuarioRouter } from './routes/usuario.js'
 import { GrupoRouter } from './routes/grupo.js'
 import { MiembroGrupoRouter } from './routes/miembroGrupo.js'
@@ -13,6 +15,11 @@ import { PodcastRouter } from './routes/podcast.js'
 import { PublicacionRouter } from './routes/publicacion.js'
 import { EspecialistaRouter } from './routes/especialista.js'
 import { ActividadRecreativaRouter } from './routes/actividadRecreativa.js'
+import { MensajesRouter } from './routes/mensajes.js'
+import { configureSockets } from './sockets/index.js'
+import { AuthenticatorRouter } from './routes/authenticator.js'
+
+dotenv.config()
 
 export const crearApp = (Modelos) => {
   const app = express()
@@ -24,8 +31,15 @@ export const crearApp = (Modelos) => {
   }));
   app.use(cookieParser())
 
-  app.disable('x-powered-by')
+  const server = createServer(app)
+  const io = new Server(server, {
+    cors: {
+      origin: "*"
+    }
+  })
 
+  app.disable('x-powered-by')
+  AuthenticatorRouter
   app.use('/api/authenticator', AuthenticatorRouter(Modelos))
   app.use('/api/usuario', UsuarioRouter(Modelos))
   app.use('/api/grupo', GrupoRouter(Modelos))
@@ -34,10 +48,29 @@ export const crearApp = (Modelos) => {
   app.use('/api/publicacion', PublicacionRouter(Modelos))
   app.use('/api/especialista', EspecialistaRouter(Modelos))
   app.use('/api/actividadRecreativa', ActividadRecreativaRouter(Modelos))
+  app.use('/api/mensajes', MensajesRouter(Modelos))
+
+  // Configurar archivos estáticos
+  const __dirname = path.resolve()
+  app.use(express.static(path.join(__dirname, 'public')))
+
+  // Servir el archivo index.html para cualquier ruta que no coincida con las rutas de la API
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'))
+  })
+
+  configureSockets(io)
 
   const PORT = process.env.PORT ?? 1234
 
-  app.listen(PORT, () => {
-    console.log(`server listening on port http://localhost:${PORT}`)
+  server.listen(PORT, () => {
+    console.log(`Server listening on port http://localhost:${PORT}`)
   })
 }
+
+
+
+
+
+
+ 

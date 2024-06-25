@@ -20,5 +20,5 @@ POST http://localhost:1234/api/actividadRecreativa/eliminarActividadRecreativa
 Content-Type: application/json
 
 {
-    "id_Actividad_Recreativa": 5
+    "id_Actividad_Recreativa": 6
 }

@@ -37,6 +37,7 @@
     "node-mailjet": "^6.0.5",
     "nodemailer": "^6.9.7",
     "nodemon": "^3.1.4",
+    "socket.io": "^4.7.5",
     "zod": "3.22.4"
   },
   "devDependencies": {
