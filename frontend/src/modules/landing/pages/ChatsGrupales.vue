@@ -2,8 +2,10 @@
   <div class="h-screen xl:w-3/4 w-screen absolute bg-[#FFEEE5] flex flex-col items-center">
     <div class="mt-14 text-center flex flex-col items-center">
       <h1 class="text-5xl w-auto sm:w-[500px] md:w-[640px] text-stone-500">Explorar grupos</h1>
-      <h6 class="text-xl w-auto sm:w-[500px] md:w-[640px] text-stone-500 pt-10 text-left">
-        Categorías de grupos
+      <h6 class="text-xl w-auto sm:w-[500px] md:w-[640px] text-stone-500 pt-10">
+        ¡Encuentra un grupo de chat de acuerdo a tus necesidades!
+        <br>
+        Selecciona un grupo
       </h6>
 
       <div class="hidden lg:flex flex-col mt-12 ml-8 items-center md:mt-1">

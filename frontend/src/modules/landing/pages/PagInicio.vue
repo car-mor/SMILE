@@ -1,20 +1,22 @@
 <template>
   <div class="h-screen w-screen xl:w-3/4 absolute bg-[#FFEEE5] flex flex-col items-center">
     <!-- Mensaje de bienvenida -->
-    <h1 class="pt-14 text-5xl text-wrap text-center text-stone-500 ml-16 mr-16">Bienvenido(a) X</h1>
+    <h1 class="pt-14 text-5xl text-wrap text-center text-stone-500 ml-16 mr-16">¡Bienvenido(a) a SMILE, usuario!</h1>
 
     <div class="mt-12 text-center flex flex-col items-center sm:flex-row sm:items-start">
       <!-- Imagen podcast y link -->
       <div class="bg-stone-500/40 rounded-xl sm:mr-4 mr- xl:ml-48">
         <RouterLink :to="{ path: 'selected-podcast/1457956865' }" class="flex rounded-lg">
-          <img class="w-full lg:h-64 p-2 sm:h-[48vh]" src="@/assets/imgs/podcastHome.png" />
+          <img class="w-full lg:h-7' p-2 sm:h-[48vh]" src="@/assets/imgs/podcastHome.png" />
         </RouterLink>
       </div>
 
       <!-- Botones -->
       <div
-        class="flex flex-row md:px-32 space-x-4 sm:flex-col sm:space-x-0 sm:space-y-16 sm:ml-4 sm:mt-8"
+        class="flex  md:px-32 space-x-4 sm:flex-col sm:space-x-0 sm:space-y-8 sm:ml-4 sm:mt-8 "
       >
+      
+
         <div
           class="btn w-24 h-16 border-0 bg-[#B5D8B8] hover:bg-[#BFF6C3] mt-4"
           onclick="my_modal_1.showModal()"
@@ -22,7 +24,7 @@
           <IconoTelefono class="origin-center rotate-90" />
         </div>
         <dialog id="my_modal_1" class="modal">
-          <div class="modal-box bg-red-100 border-4 border-[#E6836D] mr-8">
+          <div class="modal-box bg-white border-4 border-[#FFFF] mr-8">
             <h3 class="font-bold text-lg">Números de emergencia:</h3>
             <ul class="text-left list-disc pl-5">
               <br />
@@ -64,18 +66,22 @@
             <div class="grid place-items-center">
               <IconoCorazon />
             </div>
-            <div class="modal-action">
+            <div class="modal-action flex justify-center items-center">
               <form method="dialog">
-                <button class="bg-[#E6836D] hover:bg-red-200 border-1 rounded-xl p-4">
+                <button class="bg-[#E6836D] hover:bg-red-200 border-1 rounded-xl p-3">
                   Cerrar
                 </button>
               </form>
             </div>
           </div>
         </dialog>
-        <div class="btn w-24 h-16 border-0 bg-[#C2E6ED] hover:bg-[#E1F7F5] mt-4">
-          <IconoMapa class="" :fill="'gray'" />
-        </div>
+        <a href="https://www.google.com/maps/search/Centros+de+Salud+Mental+Cercanos+CDMX" target="_blank" rel="noopener noreferrer" class="w-24 h-16 border-0 bg-[#C2E6ED] hover:bg-[#E1F7F5] mt-4 rounded-lg flex items-center justify-center">
+    <div class="flex items-center justify-center">
+        <!-- Supongamos que IconoMapa es un componente o una etiqueta SVG -->
+        <IconoMapa class="" :fill="'gray'" />
+    </div>
+</a>
+
         <div
           class="btn w-24 h-16 border-0 bg-[#DBA99D] hover:bg-[#FFD0D0] mt-4"
           onclick="my_modal_2.showModal()"
@@ -83,16 +89,16 @@
           <IconoFrases class="" />
         </div>
         <dialog id="my_modal_2" class="modal">
-          <div class="modal-box bg-red-100 border-4 border-[#E6836D] mr-8">
+          <div class="modal-box bg-white border-4 border-[#FFFF] mr-8">
             <h3 class="font-bold text-lg">Frase aleatoria:</h3>
 
             <p class="py-4">"{{ quote.content }}" <br />-{{ quote.author }}</p>
 
-            <div class="modal-action">
+            <div class="modal-action flex justify-center items-center">
               <form method="dialog">
                 <button
                   @click="fetchNewQuote"
-                  class="bg-[#E6836D] hover:bg-red-200 border-1 rounded-xl p-4"
+                  class="bg-[#E6836D] hover:bg-red-200 border-1 rounded-xl p-3"
                 >
                   Cerrar
                 </button>
@@ -103,7 +109,7 @@
       </div>
     </div>
 
-    <h4 class="text-lg text-stone-500 pt-6 bg-[#FFEEE5] w-screen grid place-content-center">
+    <h4 class="text-lg text-stone-500 pt-6 bg-[#FFEEE5] w-screen grid place-content-center mr-2">
       Te podría interesar...
     </h4>
 
