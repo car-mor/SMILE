@@ -2,6 +2,7 @@ import { ActividadRecreativaModel } from './actividadRecreativa.js'
 import { AuthenticatorModel } from './authenticator.js'
 import { EspecialistaModel } from './especialista.js'
 import { GrupoModel } from './grupo.js'
+import { MensajeModel } from './mensaje.js'
 import { MiembroGrupoModel } from './miembroGrupo.js'
 import { PodcastModel } from './podcast.js'
 import { PublicacionModel } from './publicacion.js'
@@ -15,5 +16,6 @@ export const Modelos = {
   PodcastModel,
   PublicacionModel,
   EspecialistaModel,
-  ActividadRecreativaModel
+  ActividadRecreativaModel,
+  MensajeModel
 }
