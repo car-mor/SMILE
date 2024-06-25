@@ -75,7 +75,7 @@
             </div>
           </div>
         </dialog>
-        <a href="https://www.google.com/maps/search/Centros+de+Salud+Mental+Cercanos+CDMX" target="_blank" rel="noopener noreferrer" class="w-24 h-16 border-0 bg-[#C2E6ED] hover:bg-[#E1F7F5] mt-4 rounded-lg flex items-center justify-center">
+        <a href="https://www.google.com.mx/maps/search/psicologos/@19.5041635,-99.1525994,15z/data=!3m1!4b1?entry=ttu" target="_blank" rel="noopener noreferrer" class="w-24 h-16 border-0 bg-[#C2E6ED] hover:bg-[#E1F7F5] mt-4 rounded-lg flex items-center justify-center">
     <div class="flex items-center justify-center">
         <!-- Supongamos que IconoMapa es un componente o una etiqueta SVG -->
         <IconoMapa class="" :fill="'gray'" />
@@ -177,7 +177,6 @@ interface Quote {
 const videos = ref<YouTubeVideo[]>([]);
 const quote = ref<Quote>({ content: '', author: '' });
 
-console.log(quote);
 
 onMounted(async () => {
   try {

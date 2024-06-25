@@ -121,6 +121,8 @@
         <h4 class="text-lg text-stone-500 text-center">
       Perfil de Usuario
     </h4>
+   
+    
     <div class="flex justify-center items-center">
         <button
           type="button"
@@ -157,6 +159,22 @@
     <h4 class="text-lg text-stone-500 text-center">
       Explorar actividades
     </h4>
+    <div class="carousel flex justify-center items-center relative">
+    <div
+      v-for="(slide, index) in slides"
+      :key="index"
+      class="carousel-item relative w-full"
+      :class="{ 'block': index === currentSlide, 'hidden': index !== currentSlide }"
+    >
+      <div class="flex justify-center items-center h-full">
+        <img :src="slide.img" class="w-48" />
+      </div>
+      <div class="absolute left-1 right-1 top-1/2 flex -translate-y-1/2 transform justify-between">
+        <button @click="prevSlide" class="btn btn-circle">❮</button>
+        <button @click="nextSlide" class="btn btn-circle">❯</button>
+      </div>
+    </div>
+  </div>
       </ul>
     </div>
   </div>
@@ -192,43 +210,31 @@
     <h4 class="text-lg text-stone-500 text-center">
       Mis chats
     </h4>
-    <br><br><br><br><br><br><br><br><br><br>
+    <br><br><br><br><br><br>
     <hr style="background-color: #fff; border-top: 1px solid #8c8b8b;">
     
     <!-- CARRUSEL ACTIVIDADES PANTALLA DE USUARIO-->
     <h4 class="text-lg text-stone-500 text-center">
       Explorar actividades
     </h4>
-    <div className="carousel w-full">
-  <div id="slide1" className="carousel-item relative w-full">
-    <img
-      src="@/assets/imgs/rompecabezas.png"
-      className="w-50" />
-    <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-      <a href="#slide3" className="btn btn-circle">❮</a>
-      <a href="#slide2" className="btn btn-circle">❯</a>
-    </div>
-  </div>
-  <div id="slide2" className="carousel-item relative w-full">
-    <img
-      src="@/assets/imgs/concentracion.png"
-      className="w-50" />
-    <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-      <a href="#slide1" className="btn btn-circle">❮</a>
-      <a href="#slide3" className="btn btn-circle">❯</a>
-    </div>
-  </div>
-  <div id="slide3" className="carousel-item relative w-full">
-    <img
-      src="@/assets/imgs/diversion.png"
-      className="w-50" />
-    <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-      <a href="#slide2" className="btn btn-circle">❮</a>
-      <a href="#slide1" className="btn btn-circle">❯</a>
-    </div>
-  </div>
+    
   
-</div>
+    <div class="carousel flex justify-center items-center relative">
+    <div
+      v-for="(slide, index) in slides"
+      :key="index"
+      class="carousel-item relative w-full"
+      :class="{ 'block': index === currentSlide, 'hidden': index !== currentSlide }"
+    >
+      <div class="flex justify-center items-center h-full">
+        <img :src="slide.img" class="w-48" />
+      </div>
+      <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+        <button @click="prevSlide" class="btn btn-circle">❮</button>
+        <button @click="nextSlide" class="btn btn-circle">❯</button>
+      </div>
+    </div>
+  </div>
     
 
   </div>
@@ -238,7 +244,7 @@
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
 
-//iconos
+// iconos
 import IconoInicio from './../../../../assets/icons/SidebarIcons/IconoInicio.vue';
 import IconoChats from './../../../../assets/icons/SidebarIcons/IconoChat.vue';
 import IconoPublicaciones from './../../../../assets/icons/SidebarIcons/IconoPosts.vue';
@@ -262,4 +268,34 @@ const closeSidebar = () => {
   isMenuActive.value = false;
 };
 
+// Importar imágenes
+import rompecabezas from '@/assets/imgs/rompecabezas.png';
+import concentracion from '@/assets/imgs/concentracion.png';
+import diversion from '@/assets/imgs/diversion.png';
+
+// Carrusel
+const slides = ref([
+  { img: rompecabezas },
+  { img: concentracion },
+  { img: diversion },
+]);
+
+const currentSlide = ref(0);
+
+const nextSlide = () => {
+  currentSlide.value = (currentSlide.value + 1) % slides.value.length;
+};
+
+const prevSlide = () => {
+  currentSlide.value = (currentSlide.value - 1 + slides.value.length) % slides.value.length;
+};
 </script>
+
+<style scoped>
+.carousel-item {
+  display: none;
+}
+.carousel-item.block {
+  display: block;
+}
+</style>
