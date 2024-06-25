@@ -1,10 +1,10 @@
 <template>
   <div class="h-screen xl:w-3/4 w-screen bg-[#FFEEE5] flex flex-col items-center">
-    <div class="mt-24 text-center flex flex-col items-center">
-      <h1 class="text-5xl w-auto sm:w-[500px] md:w-[640px] font-yeseva">
+    <div class="mt-14 text-center flex flex-col items-center">
+      <h1 class="text-5xl w-auto sm:w-[500px] md:w-[640px] text-stone-500">
         Comienza tu día con un podcast
       </h1>
-      <p class="text-xl mt-6 font-serif w-auto sm:w-[400px] md:w-[480px]">
+      <p class="text-xl mt-6 text-stone-500 w-auto sm:w-[400px] md:w-[480px]">
         "Donde la mente se encuentra con el micrófono: Tu podcast de Psicología"
       </p>
       <img class="w-auto h-32 mt-8" src="./../.././../assets/icons/microIcon.png" />
@@ -12,20 +12,20 @@
         <div class="justify-center mt-12">
           <button
             @click="getRandomPodcast"
-            class="bg-[#E6836D] hover:bg-red-200 rounded-lg py-2 px-4 text-black"
+            class="bg-[#E6836D] hover:bg-red-200 rounded-lg py-2 px-4 text-white"
           >
             Escuchar podcast aleatorio
           </button>
         </div>
         <div class="justify-center mt-12">
           <button
-            class="bg-[#E6836D] hover:bg-red-200 rounded-lg py-2 px-4 text-black md:ml-4 mb-8"
+            class="bg-[#E6836D] hover:bg-red-200 rounded-lg py-2 px-4 text-white md:ml-4 mb-8"
           >
             <RouterLink :to="{ name: 'explore-podcasts' }">Descubrir podcasts</RouterLink>
           </button>
         </div>
       </div>
-      <div class="w-screen h-full xl:pl-64 xl:pr-64">
+      <div class="w-screen h-full xl:pl-64 xl:pr-64 bg-[#FFEEE5]">
         <PodcastReproductor
           v-if="podcast && episodes.length > 0"
           :podcast="podcast"
@@ -45,6 +45,7 @@ import { ref } from 'vue';
 import fetchRandomSpanishPsychologyPodcast from './../../../composables/randomPodcast';
 import { fetchPodcastEpisodes } from './../../../composables/urlPodcastAudio';
 import PodcastReproductor from './../../../components/PodcastReproductor.vue';
+import Swal from 'sweetalert2';
 
 interface Podcast {
   title: string;
@@ -80,7 +81,11 @@ const getRandomPodcast = async () => {
       }
     }
   } catch (error) {
-    console.error('Error al obtener el podcast:', error);
+    Swal.fire({
+      icon: 'error',
+      title: 'Error al obtener el podcast',
+      text: 'Por favor, intenta de nuevo',
+    });
   }
 };
 </script>

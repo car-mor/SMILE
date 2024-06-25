@@ -101,8 +101,8 @@
       </ul>
     </div>
   </aside>
-  <div class="fixed z-40">
-    <div class="xl:hidden relative bg-none h-16 w-screen py-16">
+  <div class="fixed z-40 right-0 top-0">
+    <div class="xl:hidden relative h-16 py-16">
       <div class="absolute right-0 bg-white border-2 rounded-l-lg py-2 px-4">
         <label for="my-drawer-1" class="cursor-pointer">
           <IconoBarraDerecha class="drawer-button pr-2" />
@@ -110,6 +110,7 @@
       </div>
     </div>
   </div>
+
   <div class="drawer drawer-end absolute z-50">
     <input id="my-drawer-1" type="checkbox" class="drawer-toggle" />
     <div class="drawer-content">
@@ -127,7 +128,7 @@
     </div>
   </div>
 
-  <main class="ml-0 flex-grow h-screen w-screen absolute z-30">
+  <main class="ml-0 flex-grow h-screen w-screen bg-[#FFEEE5] absolute z-30">
     <RouterView class="z-40" />
   </main>
   <div

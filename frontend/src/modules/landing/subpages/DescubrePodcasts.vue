@@ -23,6 +23,7 @@
           v-for="(podcast, index) in searchResults"
           :key="podcast.id + '-' + index"
           class="carousel-item mb-8"
+          @click="goToPodcast(podcast.itunesId)"
         >
           <div class="flex flex-col items-center space-y-1">
             <img
@@ -58,6 +59,7 @@
               v-for="(podcast, index) in category.podcasts"
               :key="podcast.id + '-' + index"
               class="carousel-item"
+              @click="goToPodcast(podcast.itunesId)"
             >
               <div class="flex flex-col items-center">
                 <img
@@ -86,6 +88,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router';
 import fetchRandomSpanishPsychologyPodcast from './../../../composables/getPodcasts';
 import IconoBusqueda from './../../../assets/icons/ComponentsIcons/IconoBusqueda.vue';
 import IconoSinImagen from './../../../assets/icons/ComponentsIcons/IconoSinImagen.vue';
@@ -95,6 +98,7 @@ interface Podcast {
   id: string;
   title: string;
   image: string;
+  itunesId: string; // Asegúrate de incluir el itunesId
   categories?: { [key: string]: string }; // Ajuste para reflejar la estructura correcta
 }
 
@@ -102,6 +106,12 @@ interface PodcastCategory {
   name: string;
   podcasts: Podcast[];
 }
+
+const router = useRouter();
+// Función para redirigir al componente PodcastSeleccionado
+const goToPodcast = (itunesId: string) => {
+  router.push({ name: 'selected-podcast', params: { itunesId } });
+};
 
 // Estado de las categorías de podcasts
 const podcastCategories = ref<PodcastCategory[]>([

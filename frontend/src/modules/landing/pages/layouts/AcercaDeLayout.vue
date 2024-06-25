@@ -2,14 +2,14 @@
   <div class="flex flex-col h-full w-full absolute bg-red-50">
     <!-- Header -->
     <header
-      class="flex items-center h-auto px-4 border-b border-gray-300 bg-orange-50 sm:h-16 md:px-6 lg:px-8"
+      class="flex items-center h-auto px-4 border-b border-gray-300 bg-[#FFEEE5] sm:h-16 md:px-6 lg:px-8"
     >
       <div>
         <nav class="flex items-center gap-2 font-semibold" href="#">
           <!-- <div> Iconos diseñados por <a href="https://www.flaticon.es/autores/pixel-perfect" title="Pixel perfect"> Pixel perfect </a> from <a href="https://www.flaticon.es/" title="Flaticon">www.flaticon.es'</a></div> -->
           <RouterLink to="/">
             <span class="flex items-center">
-              <img class="h-8" src="./../../../../assets/icons/flecha-izquierda.png" />
+              <FlechaIzquierda class="h-16" />
             </span>
           </RouterLink>
         </nav>
@@ -30,3 +30,7 @@
     </main>
   </div>
 </template>
+
+<script setup lang="ts">
+import FlechaIzquierda from '@/assets/icons/ComponentsIcons/IconoFlechIzq.vue';
+</script>

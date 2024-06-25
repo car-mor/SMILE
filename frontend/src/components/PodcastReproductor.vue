@@ -91,6 +91,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue';
+import Swal from 'sweetalert2'
 import IconoSiguiente from './../assets/icons/ComponentsIcons/IconoSiguiente.vue';
 import IconoAnterior from './../assets/icons/ComponentsIcons/IconoAnterior.vue';
 import IconoForward from './../assets/icons/ComponentsIcons/IconoForward.vue';
@@ -107,6 +108,7 @@ interface Episode {
   enclosureUrl: string;
 }
 
+// Utiliza esta definición
 const props = defineProps<{
   podcast: Podcast;
   episodes: Episode[];
@@ -180,7 +182,12 @@ function previousEpisode() {
     isPlaying.value = false;
     loadEpisode(currentEpisodeIndex.value - 1);
   } else {
-    alert('Este es el primer episodio.');
+    Swal.fire({
+  title: 'Oops!',
+  text: 'Este es el primer episodio',
+  icon: 'warning',
+  confirmButtonText: 'OK'
+})
   }
 }
 
@@ -192,7 +199,12 @@ function nextEpisode() {
     isPlaying.value = false;
     loadEpisode(currentEpisodeIndex.value + 1);
   } else {
-    alert('Este es el último episodio.');
+    Swal.fire({
+  title: 'Oops!',
+  text: 'Este es el último episodio',
+  icon: 'warning',
+  confirmButtonText: 'OK'
+})
   }
 }
 
