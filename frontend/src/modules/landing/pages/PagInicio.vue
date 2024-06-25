@@ -1,18 +1,22 @@
 <template>
   <div class="h-screen w-screen xl:w-3/4 absolute bg-[#FFEEE5] flex flex-col items-center">
     <!-- Mensaje de bienvenida -->
-    <h1 class="pt-14 text-5xl text-wrap text-center text-stone-500 ml-16 mr-16">Bienvenido(a) X</h1>
+    <h1 class="pt-14 text-5xl text-wrap text-center text-stone-500 ml-16 mr-16">¡Bienvenido(a) a SMILE, usuario!</h1>
 
     <div class="mt-12 text-center flex flex-col items-center sm:flex-row sm:items-start">
       <!-- Imagen podcast y link -->
-      <div class="bg-stone-500/40 rounded-xl sm:mr-4 mr-4 xl:ml-48">
-        <img class="w-auto p-2 sm:h-[48vh]" src="@/assets/imgs/podcastHome.png" />
+      <div class="bg-stone-500/40 rounded-xl sm:mr-4 mr- xl:ml-48">
+        <RouterLink :to="{ path: 'selected-podcast/1457956865' }" class="flex rounded-lg">
+          <img class="w-full lg:h-7' p-2 sm:h-[48vh]" src="@/assets/imgs/podcastHome.png" />
+        </RouterLink>
       </div>
 
       <!-- Botones -->
       <div
-        class="flex flex-row md:px-32 space-x-4 sm:flex-col sm:space-x-0 sm:space-y-16 sm:ml-4 sm:mt-8"
+        class="flex  md:px-32 space-x-4 sm:flex-col sm:space-x-0 sm:space-y-8 sm:ml-4 sm:mt-8 "
       >
+      
+
         <div
           class="btn w-24 h-16 border-0 bg-[#B5D8B8] hover:bg-[#BFF6C3] mt-4"
           onclick="my_modal_1.showModal()"
@@ -20,7 +24,7 @@
           <IconoTelefono class="origin-center rotate-90" />
         </div>
         <dialog id="my_modal_1" class="modal">
-          <div class="modal-box bg-red-100 border-4 border-[#E6836D] mr-8">
+          <div class="modal-box bg-white border-4 border-[#FFFF] mr-8">
             <h3 class="font-bold text-lg">Números de emergencia:</h3>
             <ul class="text-left list-disc pl-5">
               <br />
@@ -62,18 +66,22 @@
             <div class="grid place-items-center">
               <IconoCorazon />
             </div>
-            <div class="modal-action">
+            <div class="modal-action flex justify-center items-center">
               <form method="dialog">
-                <button class="bg-[#E6836D] hover:bg-red-200 border-1 rounded-xl p-4">
+                <button class="bg-[#E6836D] hover:bg-red-200 border-1 rounded-xl p-3">
                   Cerrar
                 </button>
               </form>
             </div>
           </div>
         </dialog>
-        <div class="btn w-24 h-16 border-0 bg-[#C2E6ED] hover:bg-[#E1F7F5] mt-4">
-          <IconoMapa class="" :fill="'gray'" />
-        </div>
+        <a href="https://www.google.com.mx/maps/search/psicologos/@19.5041635,-99.1525994,15z/data=!3m1!4b1?entry=ttu" target="_blank" rel="noopener noreferrer" class="w-24 h-16 border-0 bg-[#C2E6ED] hover:bg-[#E1F7F5] mt-4 rounded-lg flex items-center justify-center">
+    <div class="flex items-center justify-center">
+        <!-- Supongamos que IconoMapa es un componente o una etiqueta SVG -->
+        <IconoMapa class="" :fill="'gray'" />
+    </div>
+</a>
+
         <div
           class="btn w-24 h-16 border-0 bg-[#DBA99D] hover:bg-[#FFD0D0] mt-4"
           onclick="my_modal_2.showModal()"
@@ -81,16 +89,16 @@
           <IconoFrases class="" />
         </div>
         <dialog id="my_modal_2" class="modal">
-          <div class="modal-box bg-red-100 border-4 border-[#E6836D] mr-8">
+          <div class="modal-box bg-white border-4 border-[#FFFF] mr-8">
             <h3 class="font-bold text-lg">Frase aleatoria:</h3>
 
             <p class="py-4">"{{ quote.content }}" <br />-{{ quote.author }}</p>
 
-            <div class="modal-action">
+            <div class="modal-action flex justify-center items-center">
               <form method="dialog">
                 <button
                   @click="fetchNewQuote"
-                  class="bg-[#E6836D] hover:bg-red-200 border-1 rounded-xl p-4"
+                  class="bg-[#E6836D] hover:bg-red-200 border-1 rounded-xl p-3"
                 >
                   Cerrar
                 </button>
@@ -101,17 +109,7 @@
       </div>
     </div>
 
-    <div
-      class="mr-4 ml-4 mt-4 pr-10 relative flex-grow flex flex-row text-2xl text-white bg-[#E6836D] hover:bg-red-200 p-4 border-0 rounded-md w-auto h-auto"
-    >
-      <p class="text-lg text-left mr-2">Escuchar podcasts</p>
-      <div class="absolute right-2 ml-2">
-        <RouterLink :to="{ name: 'podcasts' }" class="flex pl-16 rounded-lg">
-          <IconoFlecha class="ml-4 rounded-lg hover:bg-red-300 ml-16" />
-        </RouterLink>
-      </div>
-    </div>
-    <h4 class="text-lg text-stone-500 pt-6 bg-[#FFEEE5] w-screen grid place-content-center">
+    <h4 class="text-lg text-stone-500 pt-6 bg-[#FFEEE5] w-screen grid place-content-center mr-2">
       Te podría interesar...
     </h4>
 
@@ -179,7 +177,6 @@ interface Quote {
 const videos = ref<YouTubeVideo[]>([]);
 const quote = ref<Quote>({ content: '', author: '' });
 
-console.log(quote);
 
 onMounted(async () => {
   try {

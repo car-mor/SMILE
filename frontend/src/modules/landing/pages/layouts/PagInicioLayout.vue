@@ -17,11 +17,7 @@
           class="flex text-sm bg-red-100 rounded-full focus:ring-6 focus:ring-red-300 hover:ring-4 hover:ring-red-200 mr-4 mt-4 z-50"
           aria-expanded="false"
         >
-          <img
-            class="w-11 h-auto rounded-full"
-            src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-            alt="user photo"
-          />
+          
         </button>
       </div>
     </div>
@@ -122,8 +118,63 @@
         class="menu p-4 w-64 sm:w-[340px] md:w-[400px] min-h-full bg-white border-2 rounded-l-[22px]"
       >
         <!-- Sidebar content here -->
-        <h1>Nombre</h1>
-        <h4>username</h4>
+        <h4 class="text-lg text-stone-500 text-center">
+      Perfil de Usuario
+    </h4>
+   
+    
+    <div class="flex justify-center items-center">
+        <button
+          type="button"
+          class="flex bg-red-100 rounded-full focus:ring-6 focus:ring-red-300 hover:ring-4 hover:ring-red-200 mr-4 mt-4 z-50"
+          aria-expanded="false"
+        >
+        <img
+            class="w-12 h-12 rounded-full object-cover items-center"
+            src="@/assets/imgs/user_image.jpeg"
+            alt="user photo"
+          />
+          <br>
+          <!-- src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" -->
+        </button>
+      </div>
+    <div class="text-left">
+    <h1 class="text-lg text-stone-500">
+      Nombre: 
+    </h1>
+    <h1 class="text-lg text-stone-500">
+      Apellido: 
+    </h1>
+    <h1 class="text-lg text-stone-500">
+      Email: 
+    </h1>
+    </div>
+    <br>
+    <hr style="background-color: #fff; border-top: 1px solid #8c8b8b;">
+    <h4 class="text-lg text-stone-500 text-center">
+      Mis chats
+    </h4>
+    <br><br><br><br><br><br><br><br><br><br><br>
+    <hr style="background-color: #fff; border-top: 1px solid #8c8b8b;">
+    <h4 class="text-lg text-stone-500 text-center">
+      Explorar actividades
+    </h4>
+    <div class="carousel flex justify-center items-center relative">
+    <div
+      v-for="(slide, index) in slides"
+      :key="index"
+      class="carousel-item relative w-full"
+      :class="{ 'block': index === currentSlide, 'hidden': index !== currentSlide }"
+    >
+      <div class="flex justify-center items-center h-full">
+        <img :src="slide.img" class="w-48" />
+      </div>
+      <div class="absolute left-1 right-1 top-1/2 flex -translate-y-1/2 transform justify-between">
+        <button @click="prevSlide" class="btn btn-circle">❮</button>
+        <button @click="nextSlide" class="btn btn-circle">❯</button>
+      </div>
+    </div>
+  </div>
       </ul>
     </div>
   </div>
@@ -132,18 +183,68 @@
     <RouterView class="z-40" />
   </main>
   <div
-    class="hidden xl:flex flex-col fixed right-0 top-0 h-full w-1/4 bg-white rounded-l-[22px] z-40 p-4"
+    class="hidden xl:flex flex-col fixed right-0 top-0 h-full w-1/4 bg-white rounded-l-[22px] z-40 p-4 flex"
   >
     <!-- Contenido del panel lateral para pantallas grandes -->
-    <h1>Nombre</h1>
-    <h5>Username</h5>
+    <h4 class="text-lg text-stone-500 text-center">
+      Perfil de Usuario
+    </h4>
+    <div class="flex justify-center items-center">
+        <button
+          type="button"
+          class="flex bg-red-100 rounded-full focus:ring-6 focus:ring-red-300 hover:ring-4 hover:ring-red-200 mr-4 mt-4 z-50"
+          aria-expanded="false"
+        >
+        <img style="width: 120px; height: 120px; border-radius: 100%" src="@/assets/imgs/user_image.jpeg" alt="user-photo"/>
+          <br>
+          <!-- src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" -->
+        </button>
+    </div>
+    <div class="text-left">
+      <h1 class="text-lg text-stone-500">Nombre: </h1>
+      <h1 class="text-lg text-stone-500">Apellido: </h1>
+      <h1 class="text-lg text-stone-500">Email: </h1>
+    </div>
+    <br>
+    <hr style="background-color: #fff; border-top: 1px solid #8c8b8b;">
+    <h4 class="text-lg text-stone-500 text-center">
+      Mis chats
+    </h4>
+    <br><br><br><br><br><br>
+    <hr style="background-color: #fff; border-top: 1px solid #8c8b8b;">
+    
+    <!-- CARRUSEL ACTIVIDADES PANTALLA DE USUARIO-->
+    <h4 class="text-lg text-stone-500 text-center">
+      Explorar actividades
+    </h4>
+    
+  
+    <div class="carousel flex justify-center items-center relative">
+    <div
+      v-for="(slide, index) in slides"
+      :key="index"
+      class="carousel-item relative w-full"
+      :class="{ 'block': index === currentSlide, 'hidden': index !== currentSlide }"
+    >
+      <div class="flex justify-center items-center h-full">
+        <img :src="slide.img" class="w-48" />
+      </div>
+      <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+        <button @click="prevSlide" class="btn btn-circle">❮</button>
+        <button @click="nextSlide" class="btn btn-circle">❯</button>
+      </div>
+    </div>
+  </div>
+    
+
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
-//iconos
+
+// iconos
 import IconoInicio from './../../../../assets/icons/SidebarIcons/IconoInicio.vue';
 import IconoChats from './../../../../assets/icons/SidebarIcons/IconoChat.vue';
 import IconoPublicaciones from './../../../../assets/icons/SidebarIcons/IconoPosts.vue';
@@ -166,4 +267,35 @@ const closeSidebar = () => {
   sidebarOpen.value = false;
   isMenuActive.value = false;
 };
+
+// Importar imágenes
+import rompecabezas from '@/assets/imgs/rompecabezas.png';
+import concentracion from '@/assets/imgs/concentracion.png';
+import diversion from '@/assets/imgs/diversion.png';
+
+// Carrusel
+const slides = ref([
+  { img: rompecabezas },
+  { img: concentracion },
+  { img: diversion },
+]);
+
+const currentSlide = ref(0);
+
+const nextSlide = () => {
+  currentSlide.value = (currentSlide.value + 1) % slides.value.length;
+};
+
+const prevSlide = () => {
+  currentSlide.value = (currentSlide.value - 1 + slides.value.length) % slides.value.length;
+};
 </script>
+
+<style scoped>
+.carousel-item {
+  display: none;
+}
+.carousel-item.block {
+  display: block;
+}
+</style>
