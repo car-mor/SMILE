@@ -36,6 +36,7 @@
     "mysql2": "3.6.5",
     "node-mailjet": "^6.0.5",
     "nodemailer": "^6.9.7",
+    "socket.io": "^4.7.5",
     "zod": "3.22.4"
   },
   "devDependencies": {
