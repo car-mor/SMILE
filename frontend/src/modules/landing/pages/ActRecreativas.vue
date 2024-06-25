@@ -18,7 +18,7 @@
           <div>
             <h1 class="pt-4 text-stone-500 text-4xl text-wrap w-40">Mente en equilibrio</h1>
             <RouterLink to="/actividad/mente-en-equilibrio">
-              <button class="mt-8 bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-4">
+              <button class="mt-8 bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-3">
                 Ver más
               </button>
             </RouterLink>
@@ -27,7 +27,7 @@
           <div>
             <h1 class="pt-4 text-stone-500 text-4xl text-wrap w-40">Resiliencia rápida</h1>
             <RouterLink to="/actividad/resiliencia-rapida">
-              <button class="mt-8 bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-4">
+              <button class="mt-8 bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-3">
                 Ver más
               </button>
             </RouterLink>
@@ -38,7 +38,7 @@
           <div>
             <h1 class="pt-4 text-stone-500 text-4xl text-wrap w-40">Elevación anímica</h1>
             <RouterLink to="/actividad/elevacion-animica">
-              <button class="mt-8 bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-4">
+              <button class="mt-8 bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-3">
                 Ver más
               </button>
             </RouterLink>
@@ -47,7 +47,7 @@
           <div>
             <h1 class="pt-4 text-stone-500 text-4xl text-wrap w-40">Laberinto emocional</h1>
             <RouterLink to="/actividad/laberinto-emocional">
-              <button class="mt-8 bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-4">
+              <button class="mt-8 bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-3">
                 Ver más
               </button>
             </RouterLink>
