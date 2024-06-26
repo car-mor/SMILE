@@ -66,6 +66,8 @@
 import { apiFromBackend } from "@/helpers/ApiFromBackend"
 import { isThisTypeNode } from "typescript"
 import Swal from "sweetalert2"
+import { ref } from 'vue'
+import Cookies from 'js-cookie'
 
 export default{
   name: "inicioSesion",
@@ -96,8 +98,27 @@ export default{
           })
         }
         else{
+          this.obtener()
+          console.log(response);
           this.$router.push({name:"home"})
         }
+      }
+      
+      catch({response}){
+        Swal.fire({
+            title: 'Oops!',
+            text: response,
+            icon: 'error',
+            confirmButtonText: 'OK'
+          })
+      }
+    },
+    async obtener(){
+      try{
+        const response = await apiFromBackend.post("/api/authenticator/usuarioLogueado",{
+          token:Cookies.get('jwt')
+        })
+          console.log(response);
       }
       catch({response}){
         Swal.fire({

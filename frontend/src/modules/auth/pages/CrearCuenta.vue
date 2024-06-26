@@ -128,6 +128,7 @@ import Swal from 'sweetalert2';
 import HidePassword from '@/assets/icons/ComponentsIcons/IconoEyesOff.vue';
 import ShowPassword from '@/assets/icons/ComponentsIcons/IconoEyesOn.vue';
 import { apiFromBackend } from "@/helpers/ApiFromBackend"
+import router from "@/router"
 
 export default defineComponent({
   components: {
@@ -223,10 +224,15 @@ export default defineComponent({
           "Url_Foto": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQexVB_aN7tja7JIxbHVyXdDNmrTLvV0mgvgQ&s"
         })
         console.log(response)
-        if(response.data.status===200){
-          new Vue({
-            
-          })
+        if(response.data.status===201){
+          console.log("object");
+          Swal.fire({
+            icon: 'success',
+            title: 'Cuenta creada',
+            text: 'Se ha creado su cuenta correctamente.',
+          });
+          router.push({name:"landing"})
+          
         }
       }
       catch(response){

@@ -140,13 +140,13 @@
       </div>
     <div class="text-left">
     <h1 class="text-lg text-stone-500">
-      Nombre: 
+      Nombre: {{datos.nombre}}
     </h1>
     <h1 class="text-lg text-stone-500">
-      Apellido: 
+      Apellido: {{datos.apellido}}
     </h1>
     <h1 class="text-lg text-stone-500">
-      Email: 
+      Email: {{datos.correo}}
     </h1>
     </div>
     <br>
@@ -195,15 +195,15 @@
           class="flex bg-red-100 rounded-full focus:ring-6 focus:ring-red-300 hover:ring-4 hover:ring-red-200 mr-4 mt-4 z-50"
           aria-expanded="false"
         >
-        <img style="width: 120px; height: 120px; border-radius: 100%" src="@/assets/imgs/user_image.jpeg" alt="user-photo"/>
+        <img style="width: 120px; height: 120px; border-radius: 100%" src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" alt="user-photo"/>
           <br>
           <!-- src="https://flowbite.com/docs/images/people/profile-picture-5.jpg" -->
         </button>
     </div>
     <div class="text-left">
-      <h1 class="text-lg text-stone-500">Nombre: </h1>
-      <h1 class="text-lg text-stone-500">Apellido: </h1>
-      <h1 class="text-lg text-stone-500">Email: </h1>
+      <h1 class="text-lg text-stone-500">Nombre: {{ datos.nombre }}</h1>
+      <h1 class="text-lg text-stone-500">Apellido: {{ datos.apellido }}</h1>
+      <h1 class="text-lg text-stone-500">Email: {{ datos.correo }}</h1>
     </div>
     <br>
     <hr style="background-color: #fff; border-top: 1px solid #8c8b8b;">
@@ -240,9 +240,12 @@
   </div>
 </template>
 
-<script setup lang="ts">
-import { ref } from 'vue';
+<script setup>
+import { ref, reactive, onMounted  } from 'vue';
 import { RouterLink } from 'vue-router';
+import { apiFromBackend } from "./../../../../helpers/ApiFromBackend.js"
+import Cookies from 'js-cookie'
+import Swal from "sweetalert2"
 
 // iconos
 import IconoInicio from './../../../../assets/icons/SidebarIcons/IconoInicio.vue';
@@ -254,6 +257,45 @@ import IconoPodcasts from './../../../../assets/icons/SidebarIcons/IconoPodcasts
 import IconoMenu from './../../../../assets/icons/ComponentsIcons/IconoMenu.vue';
 import IconLogout from '@/components/icons/IconLogout.vue';
 import IconoBarraDerecha from '@/assets/icons/ComponentsIcons/IconoBarraDerecha.vue';
+
+
+//AL iniciar la pagina
+onMounted(async () => {
+  obtenerInfo()
+})
+
+//Valores de usuario
+
+const obtenerInfo = async() =>{
+  
+  try{
+      const response = await apiFromBackend.post("/api/authenticator/usuarioLogueado",{
+        token:Cookies.get('jwt')
+      })
+        console.log(response);
+        datos.nombre=response.data.Nombre
+        datos.apellido=response.data.Apellido
+        datos.correo=response.data.Correo
+        console.log(datos.nombre);
+    }
+    catch({response}){
+      Swal.fire({
+          title: 'Oops!',
+          text: response,
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
+    }
+ 
+}
+
+
+const datos = reactive({
+  nombre: '',
+  apellido: '',
+  correo: ''
+});
+
 
 const sidebarOpen = ref(false);
 const isMenuActive = ref(false);

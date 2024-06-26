@@ -54,7 +54,7 @@ export class AuthenticatorController {
 
     const decodificada = jsonwebtoken.verify(token, process.env.JWT_SECRET)
 
-    const usuarioARevisar = await this.usuarioModel.obtenerUsuarioTuristaPorCorreo(decodificada.Correo)
+    const usuarioARevisar = await this.usuarioModel.obtenerUsuarioPorCorreo(decodificada.Correo)
 
     if (usuarioARevisar.length === 0) return false
 
