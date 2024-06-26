@@ -89,7 +89,7 @@
           <RouterLink
             :to="{ name: 'landing' }"
             class="flex items-center p-2 rounded-lg hover:bg-red-300 group"
-            @click="closeSidebar"
+            @click="closeSession"
           >
             <IconLogout />
           </RouterLink>
@@ -308,6 +308,12 @@ const toggleSidebar = () => {
 const closeSidebar = () => {
   sidebarOpen.value = false;
   isMenuActive.value = false;
+};
+
+const closeSession = () => {
+  sidebarOpen.value = false;
+  isMenuActive.value = false;
+  Cookies.remove('jwt')
 };
 
 // Importar imágenes

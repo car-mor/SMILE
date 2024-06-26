@@ -31,4 +31,26 @@
   </main>
 </template>
 
-<script lang="ts" setup></script>
+<script setup>
+
+import { onMounted  } from 'vue';
+import router from "@/router"
+
+import Cookies from 'js-cookie'
+
+onMounted(async () => {
+  obtenerUsuarioActivo()
+})
+
+const obtenerUsuarioActivo = async() =>{
+  
+  const jwtToken = Cookies.get('jwt');
+  if (jwtToken) {
+    router.push({name:"home"})
+  } else {
+    console.log('La cookie jwt no tiene valor o no existe.');
+  }
+ 
+}
+
+</script>

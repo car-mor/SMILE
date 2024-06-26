@@ -25,7 +25,7 @@ export const crearApp = (Modelos) => {
   const app = express()
   app.use(json())
   app.use(cors({
-    origin: ['http://127.0.0.1:5173', 'http://localhost:8081'],
+    origin: ['http://192.168.1.69:5173','http://127.0.0.1:5173', 'http://localhost:8081'],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,  // Permite el envío de cookies
   }));
@@ -63,9 +63,9 @@ export const crearApp = (Modelos) => {
 
   const PORT = process.env.PORT ?? 1234
 
-  server.listen(PORT, () => {
-    console.log(`Server listening on port http://localhost:${PORT}`)
-  })
+  server.listen(PORT, '0.0.0.0', () => {
+    console.log(`Servidor escuchando en http://0.0.0.0:${PORT}`);
+  });
 }
 
 

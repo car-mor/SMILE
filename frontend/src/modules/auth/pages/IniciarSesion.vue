@@ -77,6 +77,14 @@ export default{
       password: "",
     }
   },
+  created(){
+    const jwtToken = Cookies.get('jwt');
+    if (jwtToken) {
+      this.$router.push({name:"home"})
+    } else {
+      console.log('La cookie jwt no tiene valor o no existe.');
+    }
+  },
   computed: {
     isFormEmpty(){
       return !isThisTypeNode.usuario || !this.password

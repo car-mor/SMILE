@@ -71,6 +71,11 @@ const router = createRouter({
           component: () => import('@/modules/landing/subpages/PodcastSeleccionado.vue'),
           props: true,
         },
+        {
+          path: 'chat',
+          name: 'chat',
+          component: () => import('@/modules/landing/pages/Chats.vue'),
+        },
       ],
     },
 
