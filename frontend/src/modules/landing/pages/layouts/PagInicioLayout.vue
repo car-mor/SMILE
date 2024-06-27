@@ -273,10 +273,10 @@ const obtenerInfo = async() =>{
         token:Cookies.get('jwt')
       })
         console.log(response);
+        datos.id=response.data.id
         datos.nombre=response.data.Nombre
         datos.apellido=response.data.Apellido
         datos.correo=response.data.Correo
-        console.log(datos.nombre);
     }
     catch({response}){
       Swal.fire({
@@ -291,6 +291,7 @@ const obtenerInfo = async() =>{
 
 
 const datos = reactive({
+  id: '',
   nombre: '',
   apellido: '',
   correo: ''

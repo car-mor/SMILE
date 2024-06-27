@@ -116,16 +116,23 @@
 </template>
 
 <script setup>
-import { defineComponent, reactive, ref, watch } from 'vue';
+import { defineComponent, reactive, ref, onMounted } from 'vue';
 import * as yup from 'yup';
 import Swal from 'sweetalert2';
 import HidePassword from '@/assets/icons/ComponentsIcons/IconoEyesOff.vue';
 import ShowPassword from '@/assets/icons/ComponentsIcons/IconoEyesOn.vue';
 import { apiFromBackend } from "@/helpers/ApiFromBackend"
 import router from "@/router"
+import Cookies from 'js-cookie'
 
 const chat = reactive({
-  entrarChat:''
+  entrarChat:'',
+  id:''
+})
+
+export const compartidoInfo = reactive({
+  entrarChat:'',
+  id:''
 })
 
 const entrarChat1 = () =>{chat.entrarChat='1'
@@ -139,9 +146,79 @@ const entrarChat4 = () =>{chat.entrarChat='4'
 const entrarChat5 = () =>{chat.entrarChat='5'
   entrarChat()};
 
+onMounted(async () =>{
+  try{
+    const response = await apiFromBackend.post("/api/authenticator/usuarioLogueado",{
+      token:Cookies.get('jwt')
+    })
+      chat.id=response.data.id
+  }
+  catch({response}){
+    Swal.fire({
+        title: 'Oops!',
+        text: response,
+        icon: 'error',
+        confirmButtonText: 'OK'
+      })
+  }
+})
+
 const entrarChat = async () =>{
-  console.log(chat.entrarChat);
+  try{
+    const response = await apiFromBackend.post("/api/miembroGrupo/obtenerMimebroGrupo",{
+        "id_Grupo": chat.entrarChat,
+        "id_Usuario": ''+chat.id
+    })
+      console.log(response);
+      if(response.data.status===404){
+        Swal.fire({
+          title: "No estas dentro de este grupo",
+          text: "¿Deseas registrarse a este grupo?",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Registrar"
+        }).then((result) => {
+          if (result.isConfirmed) {
+            registrar()
+          }
+        });
+      }
+  }
+  catch(response){
+    Swal.fire({
+        title: 'Oops!',
+        text: response,
+        icon: 'error',
+        confirmButtonText: 'OK'
+      })
+  }
 }
+
+const registrar = async () =>{
+  try{
+    const response = await apiFromBackend.post("/api/miembroGrupo/crearMiembroGrupo",{
+        "id_Grupo": chat.entrarChat,
+        "id_Usuario": ''+chat.id
+    })
+      console.log(response);
+      Swal.fire({
+        title: "Registrado",
+        text: "Se ha registrado correctamente al grupo",
+        icon: "success"
+      });
+  }
+  catch(response){
+    Swal.fire({
+        title: 'Oops!',
+        text: response,
+        icon: 'error',
+        confirmButtonText: 'OK'
+      })
+  }
+}
+
 
 </script>
 

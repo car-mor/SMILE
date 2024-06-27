@@ -25,7 +25,7 @@ export class MiembroGrupoController {
 
     if (miembroGrupo) return res.json(miembroGrupo)
 
-    res.status(404).json({ message: 'Este lugar no está marcado como favorito' })
+    res.status(203).json({ message: 'No ha sido asociados', status:404 })
   }
 
   crearMiembroGrupo = async (req, res) => {

@@ -25,7 +25,7 @@
 import { ref, onMounted, watch } from 'vue';
 import { io } from 'socket.io-client';
 
-const socket = io('http://192.168.1.104:1234');
+const socket = io('http://192.168.1.69:1234');
 
 const messages = ref([]);
 const messageInput = ref('');
@@ -33,7 +33,7 @@ const messagesContainer = ref(null);
 
 // Unirse al grupo con id 1 al montar el componente
 onMounted(() => {
-  socket.emit('joinGroup', 1);
+  socket.emit('joinGroup', 2);
   
   socket.on('previousMessages', (receivedMessages) => {
     messages.value = receivedMessages;
@@ -49,7 +49,7 @@ onMounted(() => {
 const sendMessage = () => {
   const message = messageInput.value;
   if (message.trim()) {
-    socket.emit('message', { usuarioId: 1, grupoId: 1, mensaje: message });
+    socket.emit('message', { usuarioId: 16, grupoId: 2, mensaje: message });
     messageInput.value = '';
   }
 };

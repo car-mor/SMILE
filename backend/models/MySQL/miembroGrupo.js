@@ -16,10 +16,9 @@ export class MiembroGrupoModel {
 
   static async obtenerMiembroGrupoPorIdUsuario ({ entrada }) {
     const {
-      id_Grupo: idGrupo, id_Usuario: idUsuario
+      id_Grupo: id_Grupo, id_Usuario: id_Usuario
     } = entrada
-
-    const [miembroGrupo] = await connectionMySQL.query('select id_Miembro_Grupo, id_Grupo, id_Usuario from miembro_grupo where id_Grupo = ? and id_Usuario = ?;', [idGrupo, idUsuario])
+    const [miembroGrupo] = await connectionMySQL.query('select id_Miembro_Grupo, id_Grupo, id_Usuario from miembro_grupo where id_Grupo = ? and id_Usuario = ?;', [id_Grupo, id_Usuario])
 
     if (miembroGrupo.length === 0) return false
 
@@ -30,8 +29,6 @@ export class MiembroGrupoModel {
     const {
       id_Grupo: idGrupo, id_Usuario: idUsuario
     } = entrada
-
-    console.log(idGrupo, idUsuario)
 
     try {
       await connectionMySQL.query('insert into miembro_grupo (id_Grupo, id_Usuario) values(?, ?)', [idGrupo, idUsuario])
