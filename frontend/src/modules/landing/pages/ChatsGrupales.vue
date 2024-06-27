@@ -8,59 +8,103 @@
         Selecciona un grupo
       </h6>
 
+
       <div class="hidden lg:flex flex-col mt-12 ml-8 items-center md:mt-1">
         <div class="flex flex-row">
           <div class="flex justify-center pt-8 space-x-16">
-            <RouterLink to="/categoria/amigos">
-              <img class="h-48" src="@/assets/imgs/groups/gruposAmigos.png" />
-            </RouterLink>
-            <RouterLink to="/categoria/ansiedad">
-              <img class="h-48" src="@/assets/imgs/groups/gruposAnsiedad.png" />
-            </RouterLink>
+            <div>
+              <img 
+                class="h-48" src="@/assets/imgs/groups/gruposAmigos.png" 
+                @click="entrarChat1" 
+                style="cursor: pointer;"
+              />
+            </div>
+            <div>
+              <img 
+                class="h-48" src="@/assets/imgs/groups/gruposAnsiedad.png" 
+                @click="entrarChat2" 
+                style="cursor: pointer;"
+              />
+            </div>
           </div>
         </div>
         <div class="flex flex-row">
           <div class="flex justify-center pt-8 space-x-6">
-            <RouterLink to="/categoria/familia">
-              <img class="h-64" src="@/assets/imgs/groups/gruposFamilia.png" />
-            </RouterLink>
-            <RouterLink to="/categoria/depresion">
-              <img class="h-64" src="@/assets/imgs/groups/gruposDepresion.png" />
-            </RouterLink>
-            <RouterLink to="/categoria/acoso">
-              <img class="h-64" src="@/assets/imgs/groups/gruposAcoso.png" />
-            </RouterLink>
+            <div>
+              <img 
+                class="h-48" src="@/assets/imgs/groups/gruposFamilia.png" 
+                @click="entrarChat3" 
+                style="cursor: pointer;"
+              />
+            </div>
+            <div>
+              <img 
+                class="h-48" src="@/assets/imgs/groups/gruposDepresion.png" 
+                @click="entrarChat4" 
+                style="cursor: pointer;"
+              />
+            </div>
+            <div>
+              <img 
+                class="h-48" src="@/assets/imgs/groups/gruposAcoso.png" 
+                @click="entrarChat5" 
+                style="cursor: pointer;"
+              />
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Carrusel vertical para pantallas pequeñas -->
-      <div class="lg:hidden mt-12 w-screen h-3/4 bg-[#FFEEE5] absolute flex justify-center mt-32">
+      
+      <div class="lg:hidden mt-12 w-screen h-3/4 bg-[#FFEEE5] absolute flex justify-center mt-48">
         <div class="carousel carousel-vertical rounded-box w-3/4">
           <div class="carousel-item flex justify-center">
-            <RouterLink to="/categoria/amigos">
-              <img class="h-64 object-contain" src="@/assets/imgs/groups/gruposAmigos.png" />
-            </RouterLink>
+            
+            <div>
+              
+              <img 
+                class="h-48" src="@/assets/imgs/groups/gruposAmigos.png" 
+                @click="entrarChat1" 
+                style="cursor: pointer;"
+              />
+            </div>
           </div>
           <div class="carousel-item flex justify-center">
-            <RouterLink to="/categoria/ansiedad">
-              <img class="h-64 object-contain" src="@/assets/imgs/groups/gruposAnsiedad.png" />
-            </RouterLink>
+            <div>
+              <img 
+                class="h-48" src="@/assets/imgs/groups/gruposAnsiedad.png" 
+                @click="entrarChat2" 
+                style="cursor: pointer;"
+              />
+            </div>
           </div>
           <div class="carousel-item flex justify-center">
-            <RouterLink to="/categoria/familia">
-              <img class="h-64 object-contain" src="@/assets/imgs/groups/gruposFamilia.png" />
-            </RouterLink>
+            <div>
+              <img 
+                class="h-48" src="@/assets/imgs/groups/gruposFamilia.png" 
+                @click="entrarChat3" 
+                style="cursor: pointer;"
+              />
+            </div>
           </div>
           <div class="carousel-item flex justify-center mt-10">
-            <RouterLink to="/categoria/depresion">
-              <img class="h-64 object-contain" src="@/assets/imgs/groups/gruposDepresion.png" />
-            </RouterLink>
+            <div>
+              <img 
+                class="h-48" src="@/assets/imgs/groups/gruposDepresion.png" 
+                @click="entrarChat4" 
+                style="cursor: pointer;"
+              />
+            </div>
           </div>
           <div class="carousel-item flex justify-center mt-10 pb-12">
-            <RouterLink to="/categoria/acoso">
-              <img class="h-64 object-contain" src="@/assets/imgs/groups/gruposAcoso.png" />
-            </RouterLink>
+            <div>
+              <img 
+                class="h-48" src="@/assets/imgs/groups/gruposAcoso.png" 
+                @click="entrarChat5" 
+                style="cursor: pointer;"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -71,10 +115,34 @@
   </main>
 </template>
 
-<script>
-export default {
-  // No need for extra components as we are using DaisyUI classes
-};
+<script setup>
+import { defineComponent, reactive, ref, watch } from 'vue';
+import * as yup from 'yup';
+import Swal from 'sweetalert2';
+import HidePassword from '@/assets/icons/ComponentsIcons/IconoEyesOff.vue';
+import ShowPassword from '@/assets/icons/ComponentsIcons/IconoEyesOn.vue';
+import { apiFromBackend } from "@/helpers/ApiFromBackend"
+import router from "@/router"
+
+const chat = reactive({
+  entrarChat:''
+})
+
+const entrarChat1 = () =>{chat.entrarChat='1'
+  entrarChat()};
+const entrarChat2 = () =>{chat.entrarChat='2'
+  entrarChat()};
+const entrarChat3 = () =>{chat.entrarChat='3'
+  entrarChat()};
+const entrarChat4 = () =>{chat.entrarChat='4'
+  entrarChat()};
+const entrarChat5 = () =>{chat.entrarChat='5'
+  entrarChat()};
+
+const entrarChat = async () =>{
+  console.log(chat.entrarChat);
+}
+
 </script>
 
 <style>
