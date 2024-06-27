@@ -26,7 +26,7 @@
           <img class="h-48" src="@/assets/imgs/games/juegosDiamante.png" alt="Resiliencia rápida" />
           <div>
             <h1 class="pt-4 text-stone-500 text-4xl text-wrap w-40">Resiliencia rápida</h1>
-            <RouterLink to="/actividad/resiliencia-rapida">
+            <RouterLink :to="{ name: 'resiliencia-rapida' }">
               <button class="mt-8 bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-3">
                 Ver más
               </button>
@@ -37,7 +37,7 @@
           <img class="h-48" src="@/assets/imgs/games/juegosGorro.png" alt="Elevación anímica" />
           <div>
             <h1 class="pt-4 text-stone-500 text-4xl text-wrap w-40">Elevación anímica</h1>
-            <RouterLink to="/actividad/elevacion-animica">
+            <RouterLink :to="{ name: 'elevacion-animica' }">
               <button class="mt-8 bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-3">
                 Ver más
               </button>
@@ -46,7 +46,7 @@
           <img class="h-48" src="@/assets/imgs/games/juegosMedalla.png" alt="Laberinto emocional" />
           <div>
             <h1 class="pt-4 text-stone-500 text-4xl text-wrap w-40">Laberinto emocional</h1>
-            <RouterLink to="/actividad/laberinto-emocional">
+            <RouterLink :to="{ name: 'laberinto-emocional' }">
               <button class="mt-8 bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-3">
                 Ver más
               </button>

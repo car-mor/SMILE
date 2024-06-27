@@ -2,16 +2,16 @@
     <div class="h-screen xl:w-3/4 w-screen absolute bg-[#FFEEE5] flex flex-col items-center">
       <div class="mt-10 text-center flex flex-col items-center">
         <h1 class="lg:pt-0 pt-14 text-5xl sm:w-[500px] md:w-[640px] text-stone-500">
-          Sección Mente en Equilibrio
+            Sección Elevación Anímica
         </h1>
         <div v-if="!showIframe">
           <h4 class="text-2xl text-stone-500 pt-6 bg-[#FFEEE5] font-bold text-justify ml-24">
             ¿Sabías qué...?
           </h4>
           <h4 class="text-lg text-stone-500 pt-6 bg-[#FFEEE5] text-justify ml-24 mr-32">
-            Los Rompecabezas ayudan a mejorar la memoria, la concentración y las habilidades de resolución de problemas, además de tener un efecto calmante.
+            Los Juegos de Relajación son efectivos para reducir el estrés y la ansiedad, ayudando a los usuarios a centrarse en el presente y practicar técnicas de mindfulness.
             <br>
-            Los juegos de memoria ayudan a mejorar la memoria a corto plazo y la atención, manteniendo la mente activa y combatiendo la fatiga mental.
+            Los juegos de Arte y Creatividad ayudan a manejar el estrés y las emociones negativas, proporcionando una salida positiva para los sentimientos.
           </h4>
   
           <section>
@@ -43,10 +43,10 @@
   </template>
   
   <script>
-  import sudokuImg from '@/assets/imgs/games/sudoku.jpg'
-  import crucigramaImg from '@/assets/imgs/games/crucigrama.jpg'
-  import memoramaImg from '@/assets/imgs/games/memorama.jpg'
-  import sopaletrasImg from '@/assets/imgs/games/sopadeletras.jpg'
+  import piano from '@/assets/imgs/games/piano.jpg'
+  import zen1 from '@/assets/imgs/games/zen1.jpg'
+  import zen2 from '@/assets/imgs/games/zen2.jpg'
+  import colorear from '@/assets/imgs/games/colorear.jpg'
   
   export default {
     data() {
@@ -55,24 +55,24 @@
         currentIframe: '',
         games: [
           {
-            name: 'Daily Sudoku',
-            image: sudokuImg,
-            iframe: 'https://html5.gamedistribution.com/b301966b8fa6449ea4f5676545da33ca/'
+            name: 'Piano tiles',
+            image: piano,
+            iframe: 'https://html5.gamedistribution.com/01916e94606344f5b0620fd8e76d2127/'
           },
           {
-            name: 'Crucigrama clásico',
-            image: crucigramaImg,
-            iframe: 'https://html5.gamedistribution.com/ce83325c4c8a4b4caaf8df24e2316ff2/'
+            name: 'Zen 1',
+            image: zen1,
+            iframe: 'https://html5.gamedistribution.com/f6b626122cd74a15a3c3b3613ffd58d8/'
           },
           {
-            name: 'Memorama',
-            image: memoramaImg,
-            iframe: 'https://html5.gamedistribution.com/645192b1d71f4762850651a4f007d81a/'
+            name: 'Zen 2',
+            image: zen2,
+            iframe: 'https://html5.gamedistribution.com/61cc1e111cf64ce0ad3180919cc93e9e/'
           },
           {
-            name: 'Sopa de letras',
-            image: sopaletrasImg,
-            iframe: 'https://html5.gamedistribution.com/1f8e241982414a9db189f922f0c250af/'
+            name: 'Colorear',
+            image: colorear,
+            iframe: 'https://html5.gamedistribution.com/944ef4b4956a441b915d1f62ee8c2c12/'
           }
         ]
       }

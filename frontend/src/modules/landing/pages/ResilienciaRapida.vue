@@ -2,16 +2,16 @@
     <div class="h-screen xl:w-3/4 w-screen absolute bg-[#FFEEE5] flex flex-col items-center">
       <div class="mt-10 text-center flex flex-col items-center">
         <h1 class="lg:pt-0 pt-14 text-5xl sm:w-[500px] md:w-[640px] text-stone-500">
-          Sección Mente en Equilibrio
+            Sección Resiliencia Rápida
         </h1>
         <div v-if="!showIframe">
           <h4 class="text-2xl text-stone-500 pt-6 bg-[#FFEEE5] font-bold text-justify ml-24">
             ¿Sabías qué...?
           </h4>
           <h4 class="text-lg text-stone-500 pt-6 bg-[#FFEEE5] text-justify ml-24 mr-32">
-            Los Rompecabezas ayudan a mejorar la memoria, la concentración y las habilidades de resolución de problemas, además de tener un efecto calmante.
+            Los Juegos de Estrategia ayudan a desarrollar habilidades de planificación, toma de decisiones y pensamiento crítico, útiles para gestionar el estrés y las presiones en situaciones controladas.
             <br>
-            Los juegos de memoria ayudan a mejorar la memoria a corto plazo y la atención, manteniendo la mente activa y combatiendo la fatiga mental.
+            Los juegos Cooperativos ayudan a mejorar las habilidades sociales y la empatía, y ayudan a reducir la sensación de soledad al promover la interacción social.
           </h4>
   
           <section>
@@ -43,10 +43,10 @@
   </template>
   
   <script>
-  import sudokuImg from '@/assets/imgs/games/sudoku.jpg'
-  import crucigramaImg from '@/assets/imgs/games/crucigrama.jpg'
-  import memoramaImg from '@/assets/imgs/games/memorama.jpg'
-  import sopaletrasImg from '@/assets/imgs/games/sopadeletras.jpg'
+  import ajedrez from '@/assets/imgs/games/ajedrez.jpg'
+  import cazadores from '@/assets/imgs/games/cazadores.jpg'
+  import dungeonchess from '@/assets/imgs/games/dungeonchess.jpg'
+  import soccer from '@/assets/imgs/games/soccer.jpg'
   
   export default {
     data() {
@@ -55,24 +55,24 @@
         currentIframe: '',
         games: [
           {
-            name: 'Daily Sudoku',
-            image: sudokuImg,
-            iframe: 'https://html5.gamedistribution.com/b301966b8fa6449ea4f5676545da33ca/'
+            name: 'Ajedrez',
+            image: ajedrez,
+            iframe: 'https://html5.gamedistribution.com/1184bd55c814486ca6f2a43198c424bf/'
           },
           {
-            name: 'Crucigrama clásico',
-            image: crucigramaImg,
-            iframe: 'https://html5.gamedistribution.com/ce83325c4c8a4b4caaf8df24e2316ff2/'
+            name: 'Cazadores online',
+            image: cazadores,
+            iframe: 'https://html5.gamedistribution.com/a966f650eafc4e6986347b6440313fea/'
           },
           {
-            name: 'Memorama',
-            image: memoramaImg,
-            iframe: 'https://html5.gamedistribution.com/645192b1d71f4762850651a4f007d81a/'
+            name: 'Dungeon Chess',
+            image: dungeonchess,
+            iframe: 'https://html5.gamedistribution.com/201111b309c74eda89bc4c759c722170/'
           },
           {
-            name: 'Sopa de letras',
-            image: sopaletrasImg,
-            iframe: 'https://html5.gamedistribution.com/1f8e241982414a9db189f922f0c250af/'
+            name: 'Fútbol Cooperativo',
+            image: soccer,
+            iframe: 'https://html5.gamedistribution.com/987e7aae71b949c2b8eb9184636efe4f/'
           }
         ]
       }
