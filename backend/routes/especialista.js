@@ -7,6 +7,7 @@ export const EspecialistaRouter = (Modelos) => {
 
   EspecialistaRouter.get('/', especialistaController.obtenerTodosLosEspecialistas)
   EspecialistaRouter.get('/:id', especialistaController.obtenerEspecialistaPorId)
+  EspecialistaRouter.get('/titulo/:titulo', especialistaController.obtenerEspecialistaPorTitulo)
   EspecialistaRouter.post('/crearEspecialista', especialistaController.crearEspecialista)
   EspecialistaRouter.post('/eliminarEspecialista', especialistaController.eliminarEspecialistaPorId)
 

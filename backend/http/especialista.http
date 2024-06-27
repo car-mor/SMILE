@@ -4,6 +4,9 @@ GET http://localhost:1234/api/especialista
 ### Obtener especialistas por ID
 GET http://localhost:1234/api/especialista/1
 
+### Obtener especialistas por titulo
+GET http://localhost:1234/api/especialista/titulo/Psicologo
+
 
 ### Crear especialista
 POST http://localhost:1234/api/especialista/crearEspecialista
