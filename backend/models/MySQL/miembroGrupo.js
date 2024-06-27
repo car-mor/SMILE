@@ -8,10 +8,10 @@ export class MiembroGrupoModel {
   }
 
   static async obtenerMiembroGrupoPorId (idMiembroGrupo) {
-    const [miembroGrupo] = await connectionMySQL.query('select id_Miembro_Grupo from miembro_grupo where id_Miembro_Grupo = ?;', [idMiembroGrupo])
+    const [miembroGrupo] = await connectionMySQL.query('select id_Grupo from miembro_grupo where id_Usuario = ?;', [idMiembroGrupo])
     if (miembroGrupo.length === 0) return false
 
-    return miembroGrupo[0]
+    return miembroGrupo
   }
 
   static async obtenerMiembroGrupoPorIdUsuario ({ entrada }) {
@@ -22,7 +22,7 @@ export class MiembroGrupoModel {
 
     if (miembroGrupo.length === 0) return false
 
-    return miembroGrupo[0]
+    return miembroGrupo[1]
   }
 
   static async crearMiembroGrupo ({ entrada }) {

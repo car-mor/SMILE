@@ -163,7 +163,7 @@ const entrarChat = async () =>{
         "id_Grupo": chat.entrarChat,
         "id_Usuario": ''+chat.id
     })
-      console.log(response);
+      
       if(response.data.status===404){
         Swal.fire({
           title: "No estas dentro de este grupo",
@@ -179,12 +179,12 @@ const entrarChat = async () =>{
           }
         });
        
-      }
+      }    
       
-
-      actualizarDatos()
-
-      router.push({name: "chat"})
+      if(response.status===200){
+        actualizarDatos()
+        router.push({name: "chat"})
+      }
   }
   catch(response){
     Swal.fire({
@@ -215,8 +215,8 @@ const registrar = async () =>{
         text: "Se ha registrado correctamente al grupo",
         icon: "success"
       });
-      infoChats.entrarChat=chat.entrarChat
-      infoChats.id=chat.id
+      actualizarDatos()
+        router.push({name: "chat"})
       
   }
   catch(response){

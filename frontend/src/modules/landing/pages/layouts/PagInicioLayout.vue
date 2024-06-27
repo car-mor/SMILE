@@ -154,7 +154,12 @@
     <h4 class="text-lg text-stone-500 text-center">
       Mis chats
     </h4>
-    <br><br><br><br><br><br><br><br><br><br><br>
+    <div @click="chat1">{{chatsR.c1}}</div>
+    <div @click="chat2">{{chatsR.c2}}</div>
+    <div @click="chat3">{{chatsR.c3}}</div>
+    <div @click="chat4">{{chatsR.c4}}</div>
+    <div @click="chat5">{{chatsR.c5}}</div>
+    <br><br><br><br><br>
     <hr style="background-color: #fff; border-top: 1px solid #8c8b8b;">
     <h4 class="text-lg text-stone-500 text-center">
       Explorar actividades
@@ -210,6 +215,11 @@
     <h4 class="text-lg text-stone-500 text-center">
       Mis chats
     </h4>
+    <div @click="chat1">{{chatsR.c1}}</div>
+    <div @click="chat2">{{chatsR.c2}}</div>
+    <div @click="chat3">{{chatsR.c3}}</div>
+    <div @click="chat4">{{chatsR.c4}}</div>
+    <div @click="chat5">{{chatsR.c5}}</div>
     <br><br><br><br><br><br>
     <hr style="background-color: #fff; border-top: 1px solid #8c8b8b;">
     
@@ -243,9 +253,11 @@
 <script setup>
 import { ref, reactive, onMounted  } from 'vue';
 import { RouterLink } from 'vue-router';
+import router from "@/router"
 import { apiFromBackend } from "./../../../../helpers/ApiFromBackend.js"
 import Cookies from 'js-cookie'
 import Swal from "sweetalert2"
+import { state, guardarDatos } from '@/state.js'
 
 // iconos
 import IconoInicio from './../../../../assets/icons/SidebarIcons/IconoInicio.vue';
@@ -262,6 +274,7 @@ import IconoBarraDerecha from '@/assets/icons/ComponentsIcons/IconoBarraDerecha.
 //AL iniciar la pagina
 onMounted(async () => {
   obtenerInfo()
+  obtenerChats()
 })
 
 //Valores de usuario
@@ -289,6 +302,40 @@ const obtenerInfo = async() =>{
  
 }
 
+const obtenerChats = async () =>{
+  try{
+      const response = await apiFromBackend.get(`/api/miembroGrupo/16`)
+        
+
+        for( let i=0;i<response.data.length;i++){
+          if(response.data[i].id_Grupo===1){
+            chatsR.c1= 'Grupo de amigos'
+          }
+          if(response.data[i].id_Grupo===2){
+            chatsR.c2= 'Grupo de Ansiedad'
+          }
+          if(response.data[i].id_Grupo===3){
+            chatsR.c3= 'Grupo de Familia'
+          }
+          if(response.data[i].id_Grupo===4){
+            chatsR.c4= 'Grupo de Depresion'
+          }
+          if(response.data[i].id_Grupo===5){
+            chatsR.c5= 'Grupo de Acoso'
+          }
+        }
+        
+    }
+    catch(response){
+      Swal.fire({
+          title: 'Oops!',
+          text: response,
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
+    }
+}
+
 
 const datos = reactive({
   id: '',
@@ -297,6 +344,41 @@ const datos = reactive({
   correo: ''
 });
 
+const chatsR = reactive({
+  c1: '',
+  c2: '',
+  c3: '',
+  c4: '',
+  c5: ''
+})
+
+let eleccion=''
+
+const chat1 = () =>{eleccion='1'
+  entrarChat()};
+const chat2 = () =>{eleccion='2'
+  entrarChat()};
+const chat3 = () =>{eleccion='3'
+  entrarChat()};
+const chat4 = () =>{eleccion='4'
+  entrarChat()};
+const chat5 = () =>{eleccion='5'
+  entrarChat()};
+
+  const entrarChat = async () =>{     
+    actualizarDatos()
+    router.push({name: "chat", force:true})
+    location.reload()
+
+
+}
+
+const actualizarDatos = () => {
+  guardarDatos({
+    entrarChat: eleccion,
+    id: chatsR.id,
+  });
+};
 
 const sidebarOpen = ref(false);
 const isMenuActive = ref(false);
@@ -315,6 +397,7 @@ const closeSession = () => {
   sidebarOpen.value = false;
   isMenuActive.value = false;
   Cookies.remove('jwt')
+  Cookies.remove('datos')
 };
 
 // Importar imágenes

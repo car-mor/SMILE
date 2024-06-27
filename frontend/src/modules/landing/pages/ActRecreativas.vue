@@ -65,11 +65,11 @@
                 src="@/assets/imgs/games/juegosEstrella.png"
                 alt="Mente en equilibrio"
               />
-              <RouterLink to="/actividad/mente-en-equilibrio">
-                <button class="mt-4 bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-2">
-                  Ver más
-                </button>
-              </RouterLink>
+              <RouterLink :to="{ name: 'mente-equilibrio' }">
+              <button class="mt-8 bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-3">
+                Ver más
+              </button>
+            </RouterLink>
             </div>
             <div class="carousel-item flex flex-col items-center">
               <img
@@ -77,11 +77,11 @@
                 src="@/assets/imgs/games/juegosDiamante.png"
                 alt="Resiliencia rápida"
               />
-              <RouterLink to="/actividad/resiliencia-rapida">
-                <button class="mt-4 bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-2">
-                  Ver más
-                </button>
-              </RouterLink>
+              <RouterLink :to="{ name: 'resiliencia-rapida' }">
+              <button class="mt-8 bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-3">
+                Ver más
+              </button>
+            </RouterLink>
             </div>
             <div class="carousel-item flex flex-col items-center">
               <img
@@ -89,11 +89,11 @@
                 src="@/assets/imgs/games/juegosGorro.png"
                 alt="Elevación anímica"
               />
-              <RouterLink to="/actividad/elevacion-animica">
-                <button class="mt-4 bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-2">
-                  Ver más
-                </button>
-              </RouterLink>
+              <RouterLink :to="{ name: 'elevacion-animica' }">
+              <button class="mt-8 bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-3">
+                Ver más
+              </button>
+            </RouterLink>
             </div>
             <div class="carousel-item flex flex-col items-center pb-10">
               <img
@@ -101,11 +101,11 @@
                 src="@/assets/imgs/games/juegosMedalla.png"
                 alt="Laberinto emocional"
               />
-              <RouterLink to="/actividad/laberinto-emocional">
-                <button class="mt-4 bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-2">
-                  Ver más
-                </button>
-              </RouterLink>
+              <RouterLink :to="{ name: 'laberinto-emocional' }">
+              <button class="mt-8 bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-3">
+                Ver más
+              </button>
+            </RouterLink>
             </div>
           </div>
         </div>

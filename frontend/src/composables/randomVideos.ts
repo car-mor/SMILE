@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Datos necesarios para la autenticación
-const apiKey = 'AIzaSyCjZkK5-buahxVIyOEp2SO94yEogOGIJPY';
+const apiKey = 'AIzaSyA0SNBO5QjgAwOiB8bKqZPtBvzQmG5WVAk';
 
 // URL base de la API
 const VIDEOS_API_URL = 'https://youtube.googleapis.com/youtube/v3';

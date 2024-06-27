@@ -10,7 +10,7 @@ export class GrupoModel {
   static async obtenerGrupoPorId (idGrupo) {
     const [grupo] = await connectionMySQL.query('select * from grupo where id_Grupo = ?;', [idGrupo])
     if (grupo.length === 0) return false
-
+console.log("object");
     return grupo[0]
   }
 

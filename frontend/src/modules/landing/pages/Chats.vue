@@ -1,6 +1,8 @@
 <template>
   <div class="h-screen w-screen xl:w-3/4 absolute bg-[#FFEEE5] flex flex-col items-center">
     <div class="chat-container">
+      <h1>{{ infoGrupo.nombreGrupo }}<br>{{ infoGrupo.descripcionGrupo }}</h1>
+      
       <div ref="messagesContainer" class="messages-container">
         <!-- Aquí va el div donde se muestran los mensajes -->
         <div v-for="message in messages" :key="message.id" class="message">
@@ -22,15 +24,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue';
+import { ref, onMounted, reactive, watch } from 'vue';
 import { io } from 'socket.io-client';
 import { state } from '@/state.js'
+import { apiFromBackend } from "./../../../helpers/ApiFromBackend.js"
 
 const socket = io('http://192.168.1.69:1234');
 
 const messages = ref([]);
 const messageInput = ref('');
 const messagesContainer = ref(null);
+
+const infoGrupo=reactive({
+  nombreGrupo:'',
+  descripcionGrupo:''
+})
 
 // Unirse al grupo con id 1 al montar el componente
 onMounted(() => {
@@ -45,6 +53,8 @@ onMounted(() => {
     addMessageToDOM(message);
     scrollToBottom();
   });
+
+  obtenerNombreGrupo()
 });
 
 const sendMessage = () => {
@@ -52,6 +62,17 @@ const sendMessage = () => {
   if (message.trim()) {
     socket.emit('message', { usuarioId: state.datos.id, grupoId: state.datos.entrarChat, mensaje: message });
     messageInput.value = '';
+  }
+};
+
+const obtenerNombreGrupo = async () => {
+  try {
+    const response = await apiFromBackend.get(`api/grupo/${state.datos.entrarChat}`);
+    infoGrupo.nombreGrupo=response.data.Nombre
+    infoGrupo.descripcionGrupo=response.data.Descripcion
+
+  } catch (error) {
+    console.error('Error al obtener el grupo:', error);
   }
 };
 
