@@ -258,6 +258,7 @@ import { apiFromBackend } from "./../../../../helpers/ApiFromBackend.js"
 import Cookies from 'js-cookie'
 import Swal from "sweetalert2"
 import { state, guardarDatos } from '@/state.js'
+import { useRoute } from 'vue-router';
 
 // iconos
 import IconoInicio from './../../../../assets/icons/SidebarIcons/IconoInicio.vue';
@@ -270,6 +271,7 @@ import IconoMenu from './../../../../assets/icons/ComponentsIcons/IconoMenu.vue'
 import IconLogout from '@/components/icons/IconLogout.vue';
 import IconoBarraDerecha from '@/assets/icons/ComponentsIcons/IconoBarraDerecha.vue';
 
+const route1 = useRoute();
 
 //AL iniciar la pagina
 onMounted(async () => {
@@ -368,7 +370,10 @@ const chat5 = () =>{eleccion='5'
   const entrarChat = async () =>{     
     actualizarDatos()
     router.push({name: "chat", force:true})
-    location.reload()
+    if(route1.name==='chat'){
+      location.reload()
+    }
+    
 
 
 }
