@@ -24,6 +24,7 @@
 <script setup lang="ts">
 import { ref, onMounted, watch } from 'vue';
 import { io } from 'socket.io-client';
+import { state } from '@/state.js'
 
 const socket = io('http://192.168.1.69:1234');
 
@@ -33,7 +34,7 @@ const messagesContainer = ref(null);
 
 // Unirse al grupo con id 1 al montar el componente
 onMounted(() => {
-  socket.emit('joinGroup', 2);
+  socket.emit('joinGroup', state.datos.entrarChat);
   
   socket.on('previousMessages', (receivedMessages) => {
     messages.value = receivedMessages;
@@ -49,7 +50,7 @@ onMounted(() => {
 const sendMessage = () => {
   const message = messageInput.value;
   if (message.trim()) {
-    socket.emit('message', { usuarioId: 16, grupoId: 2, mensaje: message });
+    socket.emit('message', { usuarioId: state.datos.id, grupoId: state.datos.entrarChat, mensaje: message });
     messageInput.value = '';
   }
 };
@@ -60,7 +61,9 @@ const addMessageToDOM = (message) => {
 
 const scrollToBottom = () => {
   // Hacer scroll hacia abajo al contenedor de mensajes
-  messagesContainer.value.scrollTop = messagesContainer.value.scrollHeight;
+  if (messagesContainer.value) {
+    messagesContainer.value.scrollTop = messagesContainer.value.scrollHeight;
+  }
 };
 
 // Vigilar los cambios en messages para hacer scroll automáticamente

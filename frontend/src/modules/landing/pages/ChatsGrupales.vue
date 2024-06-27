@@ -119,12 +119,10 @@
 import { defineComponent, reactive, ref, onMounted } from 'vue';
 import * as yup from 'yup';
 import Swal from 'sweetalert2';
-import HidePassword from '@/assets/icons/ComponentsIcons/IconoEyesOff.vue';
-import ShowPassword from '@/assets/icons/ComponentsIcons/IconoEyesOn.vue';
 import { apiFromBackend } from "@/helpers/ApiFromBackend"
 import router from "@/router"
 import Cookies from 'js-cookie'
-import { infoChats } from '@/state.js'
+import { state, guardarDatos } from '@/state.js'
 
 const chat = reactive({
   entrarChat:'',
@@ -182,8 +180,11 @@ const entrarChat = async () =>{
         });
        
       }
-      infoChats.entrarChat=chat.entrarChat
-      console.log(infoChats.compartidoInfo);
+      
+
+      actualizarDatos()
+
+      router.push({name: "chat"})
   }
   catch(response){
     Swal.fire({
@@ -194,6 +195,13 @@ const entrarChat = async () =>{
       })
   }
 }
+
+const actualizarDatos = () => {
+  guardarDatos({
+    entrarChat: chat.entrarChat,
+    id: chat.id,
+  });
+};
 
 const registrar = async () =>{
   try{
@@ -207,6 +215,8 @@ const registrar = async () =>{
         text: "Se ha registrado correctamente al grupo",
         icon: "success"
       });
+      infoChats.entrarChat=chat.entrarChat
+      infoChats.id=chat.id
       
   }
   catch(response){
