@@ -124,13 +124,9 @@ import ShowPassword from '@/assets/icons/ComponentsIcons/IconoEyesOn.vue';
 import { apiFromBackend } from "@/helpers/ApiFromBackend"
 import router from "@/router"
 import Cookies from 'js-cookie'
+import { infoChats } from '@/state.js'
 
 const chat = reactive({
-  entrarChat:'',
-  id:''
-})
-
-export const compartidoInfo = reactive({
   entrarChat:'',
   id:''
 })
@@ -184,7 +180,10 @@ const entrarChat = async () =>{
             registrar()
           }
         });
+       
       }
+      infoChats.entrarChat=chat.entrarChat
+      console.log(infoChats.compartidoInfo);
   }
   catch(response){
     Swal.fire({
@@ -208,6 +207,7 @@ const registrar = async () =>{
         text: "Se ha registrado correctamente al grupo",
         icon: "success"
       });
+      
   }
   catch(response){
     Swal.fire({
