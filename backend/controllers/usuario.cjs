@@ -1,3 +1,4 @@
+import UsuarioModel  = require('../models/MySQL/usuario');
 export class UsuarioController {
   constructor (Modelos) {
     this.usuarioModel = Modelos.UsuarioModel
@@ -37,4 +38,36 @@ export class UsuarioController {
 
     res.send({ status: 201, message: `Usuario ${usuarioEditado.Nombre} editado con éxito` })
   }
+
+   actualizarPerfil = async (req, res) => {
+    const { nombre, apellido, token } = req.body;
+    const usuario = await UsuarioModel.obtenerUsuarioPorToken(token);
+  
+    if (usuario) {
+      await UsuarioModel.actualizarUsuario(usuario.id, { nombre, apellido });
+      res.send({ status: 200, message: 'Perfil actualizado con éxito' });
+    } else {
+      res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+  };
+  
+  const actualizarFotoPerfil = async (req, res) => {
+    const { token } = req.body;
+    const { foto } = req.files;
+    const usuario = await UsuarioModel.obtenerUsuarioPorToken(token);
+  
+    if (usuario) {
+      const filePath = `/path/to/save/${foto.name}`;
+      await foto.mv(filePath);
+      await UsuarioModel.actualizarUsuario(usuario.id, { url_Foto: filePath });
+      res.send({ status: 200, message: 'Foto de perfil actualizada con éxito' });
+    } else {
+      res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+  };
+  export {
+    actualizarPerfil,
+    actualizarFotoPerfil
+  };
+  
 }

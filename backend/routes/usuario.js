@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { UsuarioController } from '../controllers/usuario.js'
+import { UsuarioController } from '../controllers/usuario.cjs'
 
 export const UsuarioRouter = (Modelos) => {
   const UsuarioRouter = Router()
@@ -9,6 +9,7 @@ export const UsuarioRouter = (Modelos) => {
   UsuarioRouter.get('/:Correo', usuarioController.obtenerUsuarioPorCorreo)
   UsuarioRouter.get('/identificador/:id', usuarioController.obtenerUsuarioPorId)
   UsuarioRouter.post('/cambiarContrasena', usuarioController.cambiarContraseña)
-
+  UsuarioRouter.post('/actualizarPerfil', usuarioController.actualizarPerfil)
+  UsuarioRouter.post('/actualizarFotoPerfil', usuarioController.actualizarFotoPerfil)
   return UsuarioRouter
 }

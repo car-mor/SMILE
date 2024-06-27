@@ -125,6 +125,7 @@
     
     <div class="flex justify-center items-center">
         <button
+        @click="cambiarFotoPerfil"
           type="button"
           class="flex bg-red-100 rounded-full focus:ring-6 focus:ring-red-300 hover:ring-4 hover:ring-red-200 mr-4 mt-4 z-50"
           aria-expanded="false"
@@ -148,6 +149,9 @@
     <h1 class="text-lg text-stone-500">
       Email: {{datos.correo}}
     </h1>
+    </div>
+    <div class="grid place-content-center mt-2">
+      <button @click="editarPerfil" class="p-2 text-white text-md font-bold text-bold rounded-lg bg-[#E6836D] hover:bg-red-200">Editar perfil</button>
     </div>
     <br>
     <hr style="background-color: #fff; border-top: 1px solid #8c8b8b;">
@@ -191,6 +195,7 @@
     </h4>
     <div class="flex justify-center items-center">
         <button
+        @click="cambiarFotoPerfil"
           type="button"
           class="flex bg-red-100 rounded-full focus:ring-6 focus:ring-red-300 hover:ring-4 hover:ring-red-200 mr-4 mt-4 z-50"
           aria-expanded="false"
@@ -204,6 +209,9 @@
       <h1 class="text-lg text-stone-500">Nombre: {{ datos.nombre }}</h1>
       <h1 class="text-lg text-stone-500">Apellido: {{ datos.apellido }}</h1>
       <h1 class="text-lg text-stone-500">Email: {{ datos.correo }}</h1>
+    </div>
+    <div class="grid place-content-center mt-2">
+      <button @click="editarPerfil"  class="p-2 text-white text-md font-bold text-bold rounded-lg bg-[#E6836D] hover:bg-red-200">Editar perfil</button>
     </div>
     <br>
     <hr style="background-color: #fff; border-top: 1px solid #8c8b8b;">
@@ -337,6 +345,79 @@ const nextSlide = () => {
 const prevSlide = () => {
   currentSlide.value = (currentSlide.value - 1 + slides.value.length) % slides.value.length;
 };
+
+const editarPerfil = async () => {
+  const { value: formValues } = await Swal.fire({
+    title: 'Editar perfil',
+    html:
+      '<input id="swal-input1" class="swal2-input" placeholder="Nombre" value="' + datos.nombre + '">' +
+      '<input id="swal-input2" class="swal2-input" placeholder="Apellido" value="' + datos.apellido + '">',
+    focusConfirm: false,
+    preConfirm: () => {
+      return [
+        document.getElementById('swal-input1').value,
+        document.getElementById('swal-input2').value
+      ]
+    }
+  })
+
+  if (formValues) {
+    const [nombre, apellido] = formValues;
+    // Aquí actualizas la información en la base de datos y en el estado de Vue
+    datos.nombre = nombre;
+    datos.apellido = apellido;
+
+    try {
+      const response = await apiFromBackend.post("/api/usuario/actualizarPerfil", {
+        nombre,
+        apellido,
+        token: Cookies.get('jwt')
+      });
+
+      Swal.fire('¡Perfil actualizado!', '', 'success');
+    } catch (error) {
+      Swal.fire('Error al actualizar perfil', '', 'error');
+    }
+  }
+};
+
+const cambiarFotoPerfil = async () => {
+  const { value: file } = await Swal.fire({
+    title: 'Subir nueva foto de perfil',
+    input: 'file',
+    inputAttributes: {
+      'accept': 'image/*',
+      'aria-label': 'Sube tu nueva foto de perfil'
+    }
+  })
+
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = async (e) => {
+      const dataUrl = e.target.result;
+      // Aquí puedes enviar la imagen al backend para actualizar la foto de perfil
+      try {
+        const formData = new FormData();
+        formData.append('foto', file);
+        formData.append('token', Cookies.get('jwt'));
+
+        const response = await apiFromBackend.post("/api/usuario/actualizarFotoPerfil", formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+
+        Swal.fire('¡Foto de perfil actualizada!', '', 'success');
+      } catch (error) {
+        Swal.fire('Error al actualizar foto de perfil', '', 'error');
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+};
+
+
+
 </script>
 
 <style scoped>

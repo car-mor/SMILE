@@ -1,5 +1,6 @@
 import bcryptjs from 'bcryptjs'
 import { connectionMySQL } from '../../helpers/connectionMySQL.js'
+const jwt = require('jsonwebtoken');
 
 export class UsuarioModel {
   static async obtenerTodosLosUsuarios () {
@@ -51,4 +52,34 @@ export class UsuarioModel {
       return error
     }
   }
+
+  static async obtenerUsuarioPorToken(token) {
+    // Decodificar el token y obtener el usuario asociado
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    return this.obtenerUsuarioPorId(decoded.id);
+  }
+
+  static async actualizarUsuario(id, datos) {
+    const campos = [];
+    const valores = [];
+
+    for (const [key, value] of Object.entries(datos)) {
+      campos.push(`${key} = ?`);
+      valores.push(value);
+    }
+
+    const query = `UPDATE usuario SET ${campos.join(', ')} WHERE id = ?`;
+    valores.push(id);
+
+    await connectionMySQL.query(query, valores);
+  }
+
+  static async obtenerUsuarioPorId(id) {
+    const query = 'SELECT * FROM usuario WHERE id = ?';
+    const [rows] = await connectionMySQL.query(query, [id]);
+    return rows[0];
+  }
+
+ 
 }
+module.exports = UsuarioModel
