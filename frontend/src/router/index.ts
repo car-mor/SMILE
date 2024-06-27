@@ -81,6 +81,21 @@ const router = createRouter({
           name: 'mente-equilibrio',
           component: () => import('@/modules/landing/pages/MenteEquilibrio.vue'),
         },
+        {
+          path: '/laberinto-emocional',
+          name: 'laberinto-emocional',
+          component: () => import('@/modules/landing/pages/LaberintoEmocional.vue'),
+        },
+        {
+          path: '/elevacion-animica',
+          name: 'elevacion-animica',
+          component: () => import('@/modules/landing/pages/ElevacionAnimica.vue'),
+        },
+        {
+          path: '/resiliencia-rapida',
+          name: 'resiliencia-rapida',
+          component: () => import('@/modules/landing/pages/ResilienciaRapida.vue'),
+        },
         
       ],
     },
