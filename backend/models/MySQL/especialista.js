@@ -21,13 +21,6 @@ export class EspecialistaModel {
     return especialista[0]
   }
 
-  static async obtenerEspecialistaPorModalidad (modalidad) {
-    const [especialista] = await connectionMySQL.query('select * from especialista where Modalidad = ?;', [modalidad])
-    if (especialista.length === 0) return false
-
-    return especialista
-  }
-
   static async crearEspecialista ({ entrada }) {
     const {
       Nombre,
