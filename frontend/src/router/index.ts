@@ -76,6 +76,12 @@ const router = createRouter({
           name: 'chat',
           component: () => import('@/modules/landing/pages/Chats.vue'),
         },
+        {
+          path: '/mente-equilibrio',
+          name: 'mente-equilibrio',
+          component: () => import('@/modules/landing/pages/MenteEquilibrio.vue'),
+        },
+        
       ],
     },
 
@@ -91,6 +97,8 @@ const router = createRouter({
       name: 'create-account',
       component: () => import('@/modules/auth/pages/CrearCuenta.vue'),
     },
+    
+    
 
     //Not foubd
     {

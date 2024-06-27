@@ -25,7 +25,7 @@
 import { ref, onMounted, watch } from 'vue';
 import { io } from 'socket.io-client';
 
-const socket = io('http://192.168.1.69:1234');
+const socket = io('http://192.168.1.104:1234');
 
 const messages = ref([]);
 const messageInput = ref('');

@@ -17,7 +17,7 @@
           />
           <div>
             <h1 class="pt-4 text-stone-500 text-4xl text-wrap w-40">Mente en equilibrio</h1>
-            <RouterLink to="/actividad/mente-en-equilibrio">
+            <RouterLink :to="{ name: 'mente-equilibrio' }">
               <button class="mt-8 bg-[#E6836D] hover:bg-red-200 rounded-lg text-white p-3">
                 Ver más
               </button>
