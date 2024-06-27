@@ -10,5 +10,5 @@ export const ActividadRecreativaRouter = (Modelos) => {
   ActividadRecreativaRouter.post('/crearActividadRecreativa', actividadRecreativaController.crearActividadRecreativa)
   ActividadRecreativaRouter.post('/eliminarActividadRecreativa', actividadRecreativaController.eliminarActividadRecreativaPorId)
 
-  return ActividadRecreativaRouter
+  return ActividadRecreativaRouter 
 }
