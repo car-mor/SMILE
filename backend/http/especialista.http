@@ -7,6 +7,9 @@ GET http://localhost:1234/api/especialista/1
 ### Obtener especialistas por titulo
 GET http://localhost:1234/api/especialista/titulo/Psicologo
 
+### Obtener especialistas por modalidad
+GET http://localhost:1234/api/especialista/modalidad/Virtual
+
 
 ### Crear especialista
 POST http://localhost:1234/api/especialista/crearEspecialista
